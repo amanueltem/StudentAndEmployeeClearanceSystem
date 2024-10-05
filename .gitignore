@@ -1,6 +1,6 @@
 HELP.md
-./backend/target/
-./backend/src/main/resources/application.properties
+/backend/target/
+/backend/src/main/resources/application.properties
 !./backend/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
