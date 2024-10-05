@@ -5,7 +5,7 @@ const {text}=props;
 //const [color,setColor]=useState('');
 let color='';
 color="info"
-const variants={"Completed":"success","Needs Update":"danger","Pending Submission":"warning","Resubmitted":"primary"}
+const variants={"accepted":"success","rejected":"danger","pending":"info"}
 if(variants[text]) color=variants[text];
 return(
       <Badge  pill

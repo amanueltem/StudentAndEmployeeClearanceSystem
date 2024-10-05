@@ -1,14 +1,24 @@
 import {useLocalState} from "../util/UseLocalStorage";
 import {useState} from 'react'
 import {Container,Row,Col,Button,Form} from "react-bootstrap"
-import {useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {useUser} from "../UserProvider/index";
+import NavHeader from "../profile/NavHeader"
+import { toast } from "react-toastify";
+import Loader from "../components/Loader";
+import loginImg from "../images/login.png";
+import styles from "./auth.module.scss";
+import Card from "../components/Card";
 const Login=()=>{
  const user=useUser();
   const [username,setUsername]=useState('')
   const [password,setPassword]=useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    
   const navigate=useNavigate();
    const sendLoginRequest=()=>{
+   console.log("This is for test.");
+     setIsLoading(false);
     const reqBody={
    username:username,
    password:password,
@@ -33,44 +43,43 @@ const Login=()=>{
   }).catch((message)=>alert(message))
    }
    return( 
-             <Container className="mt-5" >
-                    <Row className="justify-content-center">
-                    <Col md="8" lg="6">
-                  <Form.Group className="mb-3" controlId="username">
-                <Form.Label className="fs-4">Username</Form.Label>
-                <Form.Control type="email"  size="lg" placeholder="joe@gmail.com" value={username} onChange={(e)=>setUsername(e.target.value)}/>
-             </Form.Group>
-             </Col>
-             </Row>
-             <Row className="justify-content-center">
-                <Col md="8"  lg="6">
-             <Form.Group className="mb-3" controlId="password">
-              <Form.Label className="fs-4">Password</Form.Label>
-              <Form.Control type="password"  size="lg" placeholder="Type in your password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
-             </Form.Group>
-             </Col>
-             </Row>
-             <Row className="justify-content-center">
-             <Col
-                  md="8"
-                  lg="6"
-               className="mt-2 d-flex flex-column gap-5 flex-md-row justify-content-md-between">
-                  <Button id="submit"
-                   type="button" 
-                   onClick={sendLoginRequest}
-                   size="lg"
-                   >
-                  Login</Button>
-                   <Button id="submit"
-                   type="button" 
-                   onClick={(e)=>navigate("/")}
-                   size="lg"
-                   variant="secondary"
-                   >
-                  Exit</Button>
-             </Col>
-             </Row>
-             </Container>
+     <>
+      <section className={`container ${styles.auth}`}>
+        <div className={styles.img}>
+          <img src={loginImg} alt="Login" width="400" />
+        </div>
+
+        <Card>
+          <div className={styles.form}>
+            <h2>Login</h2>
+
+            <form>
+              <input
+                type="text"
+                placeholder="User Name"
+                required
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button type="button" className="--btn --btn-primary --btn-block"
+                onClick={sendLoginRequest}>
+                Login
+              </button>
+              <div className={styles.links}>
+                <Link to="/reset">Reset Password</Link>
+              </div>
+            </form>
+          </div>
+        </Card>
+      </section>
+    </>
           )
 }
 export default Login;

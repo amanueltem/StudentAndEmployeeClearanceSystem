@@ -1,0 +1,63 @@
+label{
+
+font-size:3rem !important;
+}
+input{
+font-size:2.5rem !important;
+}
+Button{
+ font-size: 3rem !important;
+}
+.forms{
+margin-left:50% !important;
+margin-bottom:5% !important;
+margin-right:50% !important;
+}
+.apply{
+ display:flex;
+ flex-direction:column !important;
+ justify-content:center;
+ gap:10px;
+ margin-left:40% !important;
+ margin-right:40% !important;
+}
+
+.detail{
+margin-top:5%;
+margin-left:5%;
+margin-right:3%;
+
+}
+.btn{
+margin-left:5% !important;
+}
+
+.labelM,.inputM{
+font-size:2rem !important;
+}
+
+
+
+/* Media query for screens below 800px */
+@media screen and (max-width: 800px) {
+.apply{
+margin-left:10% !important;
+margin-right:10% !important;
+}
+    .forms {
+        margin-left: 40% !important;
+        margin-right: 30% !important;
+    }
+    label{
+    font-size:2.5rem !important;
+    }
+    .fullName{
+      display:none;
+    }
+ .btns{
+  margin-top:4%;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+}

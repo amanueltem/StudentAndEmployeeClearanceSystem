@@ -18,9 +18,9 @@ const PrivateRoute=({children})=>{
   }
   else{
   setIsValid(false);
-   return <Navigate to="/login"/>
+   return <Navigate to="/"/>
 }
  return  isLoading ? (<div>Loading...</div>)
- :(isValid ? children : <Navigate to="/login"/>)
+ :(isValid ? children : <Navigate to="/"/>)
 }
 export default PrivateRoute;

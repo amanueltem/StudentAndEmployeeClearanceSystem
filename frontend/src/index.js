@@ -5,11 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom'
 import {UserProvider} from "./UserProvider/index"
+import Footer from "./Footer"
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
  <UserProvider>
     <BrowserRouter>
       <App />
+      
     </BrowserRouter>
 </UserProvider>
  

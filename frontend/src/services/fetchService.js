@@ -14,7 +14,8 @@ const fetchData={
    }
    
    return (
-   fetch(url,fetchData).then((response)=>{if(response.status===200)return response.json();})
+   fetch(url,fetchData).then((response)=>{if(response.status===200)return response.json();
+   else if(response.status==409)return "conflict";})
    .catch((message)=>console.log(message)))
 }
 export default ajax;
