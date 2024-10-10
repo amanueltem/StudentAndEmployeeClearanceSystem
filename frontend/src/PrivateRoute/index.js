@@ -3,6 +3,7 @@ import ajax from "../services/fetchService"
 import {Navigate} from "react-router-dom";
 import {useState} from "react"
 import {useUser} from "../UserProvider/index"
+import Loader from "../components/Loader";
 const PrivateRoute=({children})=>{
    const user=useUser();
   //const [jwt,setJwt]=useLocalState("","jwt");
@@ -20,7 +21,10 @@ const PrivateRoute=({children})=>{
   setIsValid(false);
    return <Navigate to="/"/>
 }
- return  isLoading ? (<div>Loading...</div>)
+ return  isLoading ? (
+   <Loader/>
+
+ )
  :(isValid ? children : <Navigate to="/"/>)
 }
 export default PrivateRoute;

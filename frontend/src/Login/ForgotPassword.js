@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import styles from './auth.module.scss';
 import Card from '../components/Card';
-
+import Loader from "../components/Loader";
+import { toast } from "react-toastify";
 const ForgotPassword = () => {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
-
+    const [isLoading, setIsLoading] = useState(false);
+    
   const handleSubmit = async (e) => {
+    setIsLoading(true);
     e.preventDefault();
+    if(email===null || email===''){
+    setIsLoading(false);
+    toast.error("email is required");
+    return;
+    }
     try {
         const response = await fetch(`/api/auth/forgot-password?email=${encodeURIComponent(email)}`, {
             method: 'POST',
@@ -17,17 +25,25 @@ const ForgotPassword = () => {
         });
 
         if (response.ok) {
+             setIsLoading(false);
+             toast.success("Password reset link has been sent to your email.");
             setMessage('Password reset link has been sent to your email.');
         } else {
+                setIsLoading(false);
+               toast.error("Failed to sent Password reset email.");  
             setMessage('Failed to send password reset email.');
         }
     } catch (error) {
+         setIsLoading(false);
+         toast.error("An error occurred. plaease try again.");
         setMessage('An error occurred. Please try again.');
     }
 };
 
 
     return (
+    <>
+         {isLoading && <Loader />}
         <section className={`container ${styles.auth}`}>
             <Card>
                 <div className={styles.form}>
@@ -44,10 +60,12 @@ const ForgotPassword = () => {
                             Send Reset Link
                         </button>
                     </form>
+                      <Link to="/">Back to Home</Link>
                     <p>{message}</p>
                 </div>
             </Card>
         </section>
+        </>
     );
 };
 

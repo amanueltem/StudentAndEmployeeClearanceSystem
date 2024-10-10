@@ -35,6 +35,8 @@ import "./App.css"
 import "./index.css";
 import "./HomePage.css";
 import LongForm from './RegistrarDashboard/LongForm'
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {  
       const user=useUser();
@@ -50,6 +52,7 @@ const App = () => {
     
    return (
       <div className="App">
+         <ToastContainer />
         <Routes>
          
           <Route path="/" element={<Login/>}/>

@@ -7,16 +7,22 @@ import {useUser} from "../UserProvider/index";
 import loginImg from "../images/login.png";
 import styles from "./auth.module.scss";
 import Card from "../components/Card";
+import { toast } from "react-toastify";
+import Loader from "../components/Loader";
 const Login=()=>{
  const user=useUser();
   const [username,setUsername]=useState('')
   const [password,setPassword]=useState('');
     const [isLoading, setIsLoading] = useState(false);
-    
+      
   const navigate=useNavigate();
    const sendLoginRequest=()=>{
-   console.log("This is for test.");
-     setIsLoading(false);
+  setIsLoading(true);
+  if(username===null|| username==="" || password===null || password===""){
+    toast.error("Invalid login attempt");
+    setIsLoading(false);
+    return;
+  }
     const reqBody={
    username:username,
    password:password,
@@ -30,18 +36,29 @@ const Login=()=>{
   })
   .then((response)=>{
            if(response.status===200){
+           
               return Promise.all([response.json(),response.headers])
+               
+      
            }
            else  return Promise.reject("Invalid login attempt")
   })
   .then(([body,headers])=>{
    user.setJwt(headers.get("authorization"))
+     toast.success("Login Successful...");
+    setIsLoading(false);
    window.location.href="/dashboard";
    //navigate("/dashboard");
-  }).catch((message)=>alert(message))
+  }).catch((error)=>{
+  console.log("Hello");
+    toast.error(error.message|| "Invalid login attempt");
+        setIsLoading(false);
+      
+  })
    }
    return( 
      <>
+       {isLoading && <Loader />}
       <section className={`container ${styles.auth}`}>
         <div className={styles.img}>
           <img src={loginImg} alt="Login" width="400" />
