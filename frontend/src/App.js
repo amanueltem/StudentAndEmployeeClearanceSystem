@@ -8,6 +8,7 @@ import StudentDashboard from './StudentDashboard/index'
 import ResponseDetail from './StudentDashboard/ViewStatus/ResponseDetail'
 import AdminDashboard from './AdminDashboard/index'
 import StaffDashboard from './StaffDashboard/index'
+import PlaceForm from './StaffDashboard/Requests/index'
 import Requests from './StaffDashboard/Requests/index'
 import RegisterEmployee from './AdminDashboard/RegisterEmployee/index'
 import ViewStaff from './AdminDashboard/ViewStaff/index'
@@ -25,6 +26,8 @@ import RequestView from './StaffDashboard/Requests/RequestView'
 import {useEffect,useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import Login from "./Login/index";
+import ForgotPassword from "./Login/ForgotPassword";
+import ResetPassword from "./Login/ResetPassword";
 import { useLocalState } from "./util/UseLocalStorage";
 import {useUser} from "./UserProvider/index";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -50,7 +53,9 @@ const App = () => {
         <Routes>
          
           <Route path="/" element={<Login/>}/>
-          <Route path="/test" element={<LongForm/>}/>
+          <Route path="/forgot_password" element={<ForgotPassword/>}/>
+          <Route path="/reset-password" element={<ResetPassword />} />
+
           <Route path="/dashboard" element={
              roles.find((role)=>role ==="ROLE_REGISTRAR")?
           (

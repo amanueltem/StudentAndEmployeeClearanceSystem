@@ -3,9 +3,7 @@ import {useState} from 'react'
 import {Container,Row,Col,Button,Form} from "react-bootstrap"
 import { Link, useNavigate } from "react-router-dom";
 import {useUser} from "../UserProvider/index";
-import NavHeader from "../profile/NavHeader"
-import { toast } from "react-toastify";
-import Loader from "../components/Loader";
+
 import loginImg from "../images/login.png";
 import styles from "./auth.module.scss";
 import Card from "../components/Card";
@@ -73,7 +71,7 @@ const Login=()=>{
                 Login
               </button>
               <div className={styles.links}>
-                <Link to="/reset">Reset Password</Link>
+                <Link to="/forgot_password">Forget Password</Link>
               </div>
             </form>
           </div>
