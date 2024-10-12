@@ -1,5 +1,6 @@
 
 import PrivateRoute from "./PrivateRoute/index"
+import LessPrivate from "./PrivateRoute/LessPrivate";
 import {Routes, Route } from 'react-router-dom';
 import RegistrarDashboard from './RegistrarDashboard/index'
 import RegisterStudent from './RegistrarDashboard/RegisterStudent/index'
@@ -25,9 +26,11 @@ import ViewStatus from './StudentDashboard/ViewStatus/index'
 import RequestView from './StaffDashboard/Requests/RequestView'
 import {useEffect,useState } from "react";
 import { jwtDecode } from "jwt-decode";
-import Login from "./Login/index";
-import ForgotPassword from "./Login/ForgotPassword";
-import ResetPassword from "./Login/ResetPassword";
+import Login from "./auth/index";
+import ForgotPassword from "./auth/ForgotPassword";
+import ResetPassword from "./auth/ResetPassword";
+import ResetDefault from "./auth/ResetDefault";
+import AccountManage from "./auth/AccountManage";
 import { useLocalState } from "./util/UseLocalStorage";
 import {useUser} from "./UserProvider/index";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -58,7 +61,15 @@ const App = () => {
           <Route path="/" element={<Login/>}/>
           <Route path="/forgot_password" element={<ForgotPassword/>}/>
           <Route path="/reset-password" element={<ResetPassword />} />
-
+          <Route path="/reset_default" element={
+          <LessPrivate>
+          <ResetDefault/>
+          </LessPrivate>}/>
+          <Route path="/manage_account" element={
+          <PrivateRoute>
+          <AccountManage/>
+          </PrivateRoute>}/>
+          
           <Route path="/dashboard" element={
              roles.find((role)=>role ==="ROLE_REGISTRAR")?
           (

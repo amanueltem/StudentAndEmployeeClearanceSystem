@@ -25,10 +25,13 @@ public class AccountService {
         }
         return accountRepo.save(account);
     }
+
     catch(Exception e){
         throw new IllegalStateException("Email already taken", e);
+    }    
     }
 
-        
+    public Account resetDefault(Account account){
+      return accountRepo.save(account);
     }
 }

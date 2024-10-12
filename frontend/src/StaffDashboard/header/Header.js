@@ -102,7 +102,9 @@ useEffect(()=>{
               <span className={styles.links}>
               
                
-                  <a href="#home" style={{ color: "#ff7722" }}>
+                  <a onClick={()=>{
+                     navigate("/manage_account");
+                  }} style={{ color: "#ff7722" }}>
                     <FaUserCircle size={16} />
                     Hi, {displayName}
                   </a>

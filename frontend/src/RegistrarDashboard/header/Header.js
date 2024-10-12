@@ -29,7 +29,9 @@ const Header = () => {
   const user=useUser();
      const decoded_jwt = jwtDecode(user.jwt);
 useEffect(()=>{
-   setDisplayName(decoded_jwt.sub.split('@')[0]);
+
+   setDisplayName(decoded_jwt.fname);
+   console.log(decoded_jwt.isdefault);
 },[]);
 
   const navigate = useNavigate();
@@ -113,7 +115,11 @@ useEffect(()=>{
               <span className={styles.links}>
               
                
-                  <a href="#home" style={{ color: "#ff7722" }}>
+                  <a 
+                      onClick={()=>{
+                     navigate("/manage_account");
+                  }}
+                  style={{ color: "#ff7722" }}>
                     <FaUserCircle size={16} />
                     Hi, {displayName}
                   </a>

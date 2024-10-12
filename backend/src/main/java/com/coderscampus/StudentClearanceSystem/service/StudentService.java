@@ -18,7 +18,7 @@ import com.coderscampus.StudentClearanceSystem.dto.StudentDto;
 import com.coderscampus.StudentClearanceSystem.enums.AuthorityEnum;
 import com.coderscampus.StudentClearanceSystem.repository.CollegeUserRepository;
 import com.coderscampus.StudentClearanceSystem.repository.StudentRepository;
-
+import com.coderscampus.StudentClearanceSystem.util.CustomPasswordEncoder;
 
 @Service
 public class StudentService {
@@ -30,8 +30,9 @@ public class StudentService {
     private AuthorityService authService;
     @Autowired
     private CollegeUserRepository cuRepo;
+    @Autowired
+    private CustomPasswordEncoder passwordEncoder;
     public Student saveStudent(StudentDto studentDto){
-
 
         Student newStudent = new Student();
         newStudent.setFname(studentDto.getFname());
@@ -55,8 +56,8 @@ public class StudentService {
 
         Account newAccount = new Account();
         newAccount.setUsername(newStudent.getEmail());
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String password = passwordEncoder.encode(newStudent.getFname());
+     
+        String password = passwordEncoder.getPasswordEncoder().encode(newStudent.getFname());
         newAccount.setPassword(password);
         newAccount.setCreatedDate(LocalDate.now());
         newAccount.setIsDefault(true);

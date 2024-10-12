@@ -10,12 +10,16 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-
+import com.coderscampus.StudentClearanceSystem.domain.*;
+import com.coderscampus.StudentClearanceSystem.repository.*;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import org.springframework.beans.factory.annotation.Autowired;
 import io.jsonwebtoken.SignatureAlgorithm;
 @Component
 public class JwtUtil implements Serializable{
+    @Autowired
+    private UserRepository userRepo;
     private static final long serialVersionUID=-2550185165626007488L;
     public static final long JWT_TOKEN_VALIDITY=7*24*60*60;
     // public static final long JWT_TOKEN_VALIDITY=60;
@@ -50,6 +54,14 @@ public class JwtUtil implements Serializable{
         claims.put("authorities",userDetails.getAuthorities().
         stream().map(auth->auth.getAuthority())
         .collect(Collectors.toList()));
+        if (userDetails instanceof Account) {
+            Account account = (Account) userDetails;
+            //claims.put("firstname", account.getUsername());
+            claims.put("isdefault", account.getIsDefault());
+            User user=userRepo.findUserByAccount(account).orElse(null);
+            if(user!=null)
+            claims.put("fname",user.getFname());
+        }
         return doGenerateToken(claims,userDetails.getUsername());
     }
     private String doGenerateToken(Map<String,Object> claims,String subject){

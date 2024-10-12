@@ -10,7 +10,12 @@ const fetchData={
     fetchData.headers.Authorization=`Bearer ${jwt}`
   }
    if(requestBody){
+   if(typeof(requestBody)=="string"){
+      fetchData.body=requestBody;
+   }
+   else{
     fetchData.body=JSON.stringify(requestBody);
+    }
    }
    
    return (

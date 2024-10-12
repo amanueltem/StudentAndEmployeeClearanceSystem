@@ -28,8 +28,9 @@ const Header = () => {
   const [scrollPage, setScrollPage] = useState(false);
   const user=useUser();
      const decoded_jwt = jwtDecode(user.jwt);
+    
 useEffect(()=>{
-   setDisplayName(decoded_jwt.sub.split('@')[0]);
+   setDisplayName("Admin");
 },[]);
 
   const navigate = useNavigate();
@@ -111,7 +112,9 @@ useEffect(()=>{
               <span className={styles.links}>
               
                
-                  <a href="#home" style={{ color: "#ff7722" }}>
+                  <a style={{ color: "#ff7722" }} onClick={()=>{
+                     navigate("/manage_account");
+                  }}>
                     <FaUserCircle size={16} />
                     Hi, {displayName}
                   </a>

@@ -4,6 +4,7 @@ import styles from './auth.module.scss';
 import Card from '../components/Card';
 import Loader from "../components/Loader";
 import { toast } from "react-toastify";
+import {FaHome } from "react-icons/fa";
 const ForgotPassword = () => {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
@@ -60,7 +61,10 @@ const ForgotPassword = () => {
                             Send Reset Link
                         </button>
                     </form>
-                      <Link to="/">Back to Home</Link>
+                       <Link to="/" style={{ margin: '10px 0', fontSize: '2rem', display: 'flex', alignItems: 'center' }}>
+          <FaHome style={{ marginRight: '8px' }} />
+          Back to Home
+        </Link>
                     <p>{message}</p>
                 </div>
             </Card>
