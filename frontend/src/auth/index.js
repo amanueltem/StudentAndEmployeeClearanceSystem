@@ -95,7 +95,7 @@ const Login = () => {
                     cursor: 'pointer',
                   }}
                 >
-                  {showPassword ? <FaEyeSlash /> : <FaEye />} {/* Show/Hide icon */}
+                  {showPassword ? <FaEye /> : <FaEyeSlash />} {/* Show/Hide icon */}
                 </button>
               </div>
               <button

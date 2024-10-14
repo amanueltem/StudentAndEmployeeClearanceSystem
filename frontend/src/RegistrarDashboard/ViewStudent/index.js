@@ -14,6 +14,13 @@ useEffect(()=>{
   ajax('/api/students','GET',user.jwt)
   .then((data)=>setDatas(data));
 },[]);
+const handleDelete=(studentId)=>{
+  ajax(`/api/students/${studentId}`,'delete',user.jwt);
+       const datasCopy=[...datas]
+       const i=datasCopy.findIndex(data=>data.id===studentId);
+       datasCopy.splice(i,1);
+       setDatas(datasCopy);
+}
   return (
     <div>
          <Header/>
@@ -40,6 +47,12 @@ useEffect(()=>{
                                        
                                     }}>
                                         More
+                                    </Button>
+                                       <Button   className={`${styles.btn}`}
+                                    variant="danger" onClick={(e)=>{
+                                    handleDelete(data.id);
+                                    }}>
+                                        Delete
                                     </Button>
                                 </Card.Body>
                             </Card>

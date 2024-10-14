@@ -79,7 +79,7 @@ const ResetPassword = () => {
                                         cursor: 'pointer',
                                     }}
                                 >
-                                    {showPassword ? <FaEyeSlash /> : <FaEye />} {/* Show/Hide icon */}
+                                    {showPassword ? <FaEye/> : <FaEyeSlash />} {/* Show/Hide icon */}
                                 </button>
                             </div>
                             <div style={{ position: 'relative', marginBottom: '20px' }}>
@@ -103,7 +103,7 @@ const ResetPassword = () => {
                                         cursor: 'pointer',
                                     }}
                                 >
-                                    {showConfirmPassword ? <FaEyeSlash /> : <FaEye />} {/* Show/Hide icon */}
+                                    {showConfirmPassword ? <FaEye /> : <FaEyeSlash />} {/* Show/Hide icon */}
                                 </button>
                             </div>
                             <button type="submit" className="--btn --btn-primary --btn-block">

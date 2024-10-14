@@ -30,8 +30,8 @@ const Requests = () => {
         setClearanceResponses(data);
         });
      },[])
-     
- 
+     if(clearanceResponses)
+   console.log(clearanceResponses[0]); 
   return (
     <div>
     
