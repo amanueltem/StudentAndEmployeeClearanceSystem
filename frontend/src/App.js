@@ -5,6 +5,7 @@ import {Routes, Route } from 'react-router-dom';
 import RegistrarDashboard from './RegistrarDashboard/index'
 import RegisterStudent from './RegistrarDashboard/RegisterStudent/index'
 import UpdateStudent from './RegistrarDashboard/UpdateStudent/index';
+import ViewStudentTemp from "./RegistrarDashboard/ViewStudentTemp/index"
 import ViewStudent from './RegistrarDashboard/ViewStudent/index'
 import StudentDashboard from './StudentDashboard/index'
 import ResponseDetail from './StudentDashboard/ViewStatus/ResponseDetail'
@@ -63,6 +64,21 @@ const App = () => {
          
           <Route path="/" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
+         <Route
+    path="/register_student"
+    element={
+        roles.includes("ROLE_REGISTRAR") ? (
+            <PrivateRoute>
+                <RegisterStudent />
+            </PrivateRoute>
+        ) : (
+            <PrivateRoute>
+                {/* You can redirect here or leave it blank if access is restricted */}
+                <div>Access Denied</div>
+            </PrivateRoute>
+        )
+    }
+/>
           <Route path="/forgot_password" element={<ForgotPassword/>}/>
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/reset_default" element={
@@ -205,6 +221,22 @@ const App = () => {
           ( 
           <PrivateRoute>
           <UpdateStudent/>
+          </PrivateRoute>
+          )
+          :
+          (<PrivateRoute>
+          </PrivateRoute>
+          )
+          }
+          />
+
+
+
+            <Route path="/view_student_temp/:id" element={
+          roles.find((role)=>role==="ROLE_REGISTRAR")?
+          ( 
+          <PrivateRoute>
+          <ViewStudentTemp/>
           </PrivateRoute>
           )
           :

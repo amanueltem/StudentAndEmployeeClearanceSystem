@@ -40,6 +40,8 @@ public class StudentTempoService {
         newStudent.setFname(studentDto.getFname());
         newStudent.setMname(studentDto.getMname());
         newStudent.setLname(studentDto.getLname());
+        newStudent.setEmail(studentDto.getEmail());
+        newStudent.setStudentId(studentDto.getStudentId());
         newStudent.setGender(studentDto.getGender());
         newStudent.setYear(studentDto.getYear());
         newStudent.setSemister(studentDto.getSemister());

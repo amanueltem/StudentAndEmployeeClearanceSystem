@@ -37,14 +37,8 @@ public class CampusUserService {
 
 
         newUser.setPosition(staff.getRoleName());
-        Boolean g;
-        if(staff.getGender()=="Male"){
-            g=true;
-        }
-        else{
-            g=false;
-        }
-        newUser.setGender(g);
+     
+        newUser.setGender(staff.getGender());
         newUser.setPhoneNumber(staff.getPhoneNumber());
         newUser.setCampus(staff.getCampus());
 

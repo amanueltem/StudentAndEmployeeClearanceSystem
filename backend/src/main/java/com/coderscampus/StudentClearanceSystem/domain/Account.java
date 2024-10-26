@@ -12,6 +12,10 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
+@Table(name = "account", uniqueConstraints = {
+    @UniqueConstraint(columnNames = "email"),
+    @UniqueConstraint(columnNames = "username")
+})
 public class Account implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +23,6 @@ public class Account implements UserDetails {
 
     private LocalDate createdDate;
 
-   @Column(unique = true)
   
     private String username;
 
@@ -32,7 +35,7 @@ public class Account implements UserDetails {
 
     private Boolean isDefault;
 
-    @Column(unique = true)
+   
  
     private String email;
 

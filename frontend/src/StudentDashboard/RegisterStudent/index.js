@@ -1,16 +1,19 @@
 import { useState,useEffect } from 'react';
 import "../../styles/Registration.css";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 import { Button,Dropdown,DropdownButton,ButtonGroup,Row,Col} from 'react-bootstrap';
 import ajax from "../../services/fetchService"
 import {useUser} from "../../UserProvider/index"
-
+import Loader from "../../components/Loader";
+import { toast } from "react-toastify";
 import Header from "../header/Header";
+import styles from "../../auth/auth.module.scss";
+import { FaHome } from "react-icons/fa"; 
 const RegisterStudent = () => {
   const [step, setStep] = useState(1);
 
 
-
+ const [isLoading, setIsLoading] = useState(false);
  
   
   const [departments,setDepartments]=useState([]);
@@ -106,6 +109,7 @@ const RegisterStudent = () => {
     email: '',
     gender: 'male',
     phoneNumber: '',
+    studentId:'',
     year: '',
     semister: '1',
     roomNo: '',
@@ -116,21 +120,26 @@ const RegisterStudent = () => {
   const handleSubmit = (e) => {
   
     e.preventDefault();
+    setIsLoading(true);
     // Handle form submission, you can send data to the server here
     console.log(formData);
     if(formData.fname!=''&&formData.mname
     !=''&&formData.lname!='' &&
     formData.email!='',formData.gender!=''&&formData.phoneNumber!=''
-    &&formData.year!=''&&formData.semister!=''&&formData.roomNo!=''&&selectedBlock!='Select Block'&&selectedDepartment!='Select Department'){
+    &&formData.studentId!=''&&formData.year!=''&&formData.semister!=''&&formData.roomNo!=''&&selectedBlock!='Select Block'&&selectedDepartment!='Select Department'){
   ajax('/api/tempo_students','POST',user.jwt,formData).
     then((data)=>{
-     if(data==='conflict')
-     alert('Email already taken!')
-     else alert("Student sucessfuly Registered.");
+      setIsLoading(false);
+     if(data==='conflict'){
+     toast.error('you have already registered. wait for approval.')
+   }
+     else toast.success("Student Sucessfully registered.");
     
-    }).catch((e)=>alert('Email already taken.') );
+    }).catch((e)=>{toast.error('Email already taken.');
+    setIsLoading(false)});
     }
     else{
+      setIsLoading(false);
     alert("please fill all required fileds");
     }
   };
@@ -331,6 +340,19 @@ const RegisterStudent = () => {
                       name="phoneNumber"
                     />
                   </div>
+
+
+                    <div className="mb-3">
+                    <label className="form-label labelM">Student Id</label>
+                    <input
+                      type="text"
+                      className="form-control inputM"
+                      value={formData.studentId}
+                      onChange={handleChange}
+                      name="studentId"
+                    />
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -535,8 +557,16 @@ const RegisterStudent = () => {
   };
 
 return (
+<>
+  <div className={styles.links}>
+                            <Link to="/" style={{ margin: '10px 0', fontSize: '2rem', display: 'flex', alignItems: 'center' }}>
+                                <FaHome style={{ marginRight: '8px' }} />
+                                Back to Home
+                            </Link>
+                        </div>
   <div className="justify-content-center">
-        
+         
+         {isLoading && <Loader />}
         <form onSubmit={handleSubmit}>
           {renderFormStep()}
           <div className="text-center">
@@ -581,6 +611,7 @@ return (
         </form>
   
   </div>
+  </>
 );
 
 };

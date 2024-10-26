@@ -13,7 +13,7 @@ public class User {
     private String mname;
     private String lname;
 
-    private Boolean gender;
+    private String gender;
     private Integer phoneNumber;
     private String position;
 
@@ -39,7 +39,7 @@ public class User {
 
   
 
-    public Boolean getGender() {
+    public String getGender() {
         return gender;
     }
 
@@ -74,7 +74,7 @@ public class User {
 
  
 
-    public void setGender(Boolean gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

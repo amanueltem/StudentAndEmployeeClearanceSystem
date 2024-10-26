@@ -20,12 +20,21 @@ public class StudentController {
 
     @PostMapping
     public ResponseEntity<?> saveStudent(@AuthenticationPrincipal Account account,
-                                         @RequestBody StudentDto studentDto) {
+                                         @RequestBody StudentTempo studentTempo) {
+      try{
         if (AuthorityUtil.hasRole(AuthorityEnum.ROLE_REGISTRAR.name(), account)) {
-            return ResponseEntity.ok(studentService.saveStudent(studentDto));
+            return ResponseEntity.ok(studentService.saveStudent(studentTempo));
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
+    }
+
+    catch (Exception e) {
+        // Handle other exceptions
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                             .body("An error occurred while saving the student: " + e.getMessage());
+    }
+    
     }
 
     @GetMapping

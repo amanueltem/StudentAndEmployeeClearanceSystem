@@ -39,46 +39,39 @@ public class StudentService {
     private PasswordResetTokenRepository presetRepo;
     @Autowired
     private AccountRepository accountRepo;
+    @Autowired
+    private StudentTempoRepository studentTempoRepo;
+       @Autowired
+    private EmailService emailService;
     @Transactional
-    public Student saveStudent(StudentDto studentDto){
+    public Student saveStudent(StudentTempo studentTempo){
 
         Student newStudent = new Student();
-        newStudent.setFname(studentDto.getFname());
-        newStudent.setMname(studentDto.getMname());
-        newStudent.setLname(studentDto.getLname());
+        newStudent.setFname(studentTempo.getFname());
+        newStudent.setMname(studentTempo.getMname());
+        newStudent.setLname(studentTempo.getLname());
       
         newStudent.setPosition("ROLE_STUDENT");
-        Boolean g;
-        if (studentDto.getGender() == "male") {
-            g = true;
-        } else {
-            g = false;
-        }
-        newStudent.setGender(g);
-        newStudent.setYear(studentDto.getYear());
-        newStudent.setSemister(studentDto.getSemister());
-        newStudent.setRoomNo(studentDto.getRoomNo());
-        newStudent.setBlock(studentDto.getBlock());
-        newStudent.setPhoneNumber(studentDto.getPhoneNumber());
-        newStudent.setDepartment(studentDto.getDepartment());
+        
+        newStudent.setGender(studentTempo.getGender());
+        newStudent.setYear(studentTempo.getYear());
+        newStudent.setSemister(studentTempo.getSemister());
+        newStudent.setRoomNo(studentTempo.getRoomNo());
+        newStudent.setBlock(studentTempo.getBlock());
+        newStudent.setPhoneNumber(studentTempo.getPhoneNumber());
+        newStudent.setDepartment(studentTempo.getDepartment());
 
         Account newAccount = new Account();
-         String staffId;
-        Account userInDB;
-        while(true){
-            staffId=IDGenerator.generateID("staff");
-           userInDB=accountRepo.findByUsername(staffId).orElse(null);
-           if(userInDB!=null){
-            newAccount.setUsername(staffId);
-            break;
-            }
-        }
+        
+      
+            newAccount.setUsername(studentTempo.getStudentId());
+          
      
         String password = passwordEncoder.getPasswordEncoder().encode(newStudent.getFname());
         newAccount.setPassword(password);
         newAccount.setCreatedDate(LocalDate.now());
         newAccount.setIsDefault(true);
-        newAccount.setEmail(studentDto.getEmail());
+        newAccount.setEmail(studentTempo.getEmail());
         Account savedAccount = accountService.saveAccount(newAccount);
         Authority authority = new Authority();
         authority.setAuthority(AuthorityEnum.ROLE_STUDENT.name());
@@ -87,7 +80,11 @@ public class StudentService {
        
 
         newStudent.setAccount(savedAccount);
-       
+        studentTempoRepo.delete(studentTempo);
+           String resetUrl = "http://10.10.42.244:3000";
+
+        emailService.sendEmail(studentTempo.getEmail(), "Registration approved", 
+            "your username is="+savedAccount.getUsername()+" and your default password is="+studentTempo.getFname()+".\n\n" + resetUrl);
         return studentRepo.save(newStudent);
     }
     public List<Student> getStudentsByCollege(Account account){

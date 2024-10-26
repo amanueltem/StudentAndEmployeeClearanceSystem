@@ -55,7 +55,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     public String generatePasswordResetToken(String username) {
-        Account account = accountRepo.findByUsername(username)
+        Account account = accountRepo.findByEmail(username)
             .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         PasswordResetToken presetToken=tokenRepository.findByAccount(account).orElse(null);
         if(presetToken!=null)

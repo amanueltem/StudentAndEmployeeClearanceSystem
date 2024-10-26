@@ -94,7 +94,7 @@ useEffect(()=>{
               </li>
             
               <li>
-                <NavLink to="/register" className={activeLink}>
+                <NavLink to="/register_student" className={activeLink}>
                     Register
                   </NavLink>
               </li>

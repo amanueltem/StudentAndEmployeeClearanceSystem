@@ -32,14 +32,8 @@ public class DepartmentUserService {
         newUser.setLname(staff.getLname());
  
         newUser.setPosition(staff.getRoleName());
-        Boolean g;
-        if(staff.getGender()=="Male"){
-            g=true;
-        }
-        else{
-            g=false;
-        }
-        newUser.setGender(g);
+        
+        newUser.setGender(staff.getGender());
         newUser.setPhoneNumber(staff.getPhoneNumber());
         newUser.setDepartment(staff.getDepartment());
 
