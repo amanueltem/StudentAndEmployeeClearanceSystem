@@ -57,7 +57,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public String generatePasswordResetToken(String username) {
         Account account = accountRepo.findByUsername(username)
             .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-    
+        PasswordResetToken presetToken=tokenRepository.findByAccount(account).orElse(null);
+        if(presetToken!=null)
+        tokenRepository.delete(presetToken);
         return createPasswordResetTokenForUser(account).getToken(); // Return the token as a String
     }
     
@@ -66,6 +68,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         PasswordResetToken passwordResetToken = getPasswordResetToken(token); // Validate the token
 
         if (passwordResetToken.getExpiryDate().isBefore(LocalDateTime.now())) {
+              tokenRepository.delete(passwordResetToken); 
             throw new IllegalStateException("Token has expired");
         }
 

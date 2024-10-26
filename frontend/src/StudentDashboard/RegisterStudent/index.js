@@ -3,46 +3,98 @@ import "../../styles/Registration.css";
 import { useNavigate } from 'react-router-dom';
 import { Button,Dropdown,DropdownButton,ButtonGroup,Row,Col} from 'react-bootstrap';
 import ajax from "../../services/fetchService"
-import {useUser} from "../../UserProvider/index"
+//import {useUser} from "../../UserProvider/index"
 
 import Header from "../header/Header";
 const RegisterStudent = () => {
   const [step, setStep] = useState(1);
 
-  const [blocks,setBlocks]=useState([]);
-  const [block,setSelectedBlock]=useState();
+
+
+ 
+  
   const [departments,setDepartments]=useState([]);
-  const user=useUser();
-  const [campus,setCampus]=useState('Select Campus');
-  const [college,setCollege]=useState('Select College');
-  const [departmentName,setDepartmentName]=useState('Select Department');
-  const [blockName,setBlockName]=useState('Select Block');
-  
+  //const user=useUser();
+  const [campuses,setCampuses]=useState([]);
+    const [blocks,setBlocks]=useState([]);
+  const [colleges,setColleges]=useState([]);
+  const[selectedColleges,  setSelectedColleges]=useState([]);
+  const[selectedDepartments,setSelectedDepartments]=useState([]);
+  const[selectedBlocks,setSelectedBlocks]=useState([]);
+
+   const [selectedCampus,setSelectedCampus]=useState("Select Campus");
+  const[selectedCollege,setSelectedCollege]=useState('Select College');
+  const [selectedDepartment,setSelectedDepartment]=useState('Select Department');
+  const [selectedBlock,setSelectedBlock]=useState('Select Block');
+  const [selectedYear,setSelectedYear]=useState('Select Year');
+  const [finalYear,setFinalYear]=useState(0);
+  const [college,setCollege]=useState();
   
   
 
   
-  useEffect(()=>{
-  ajax("/api/blocks/incampus","GET",user.jwt)
-  .then((blockData)=>{
-       console.log(blockData);
-      setBlocks(blockData);
-      setCampus(blockData[0].campus.name);
-      }
-      );
-      },[])
+ useEffect(() => {
+  fetch("/api/campuses", {
+    headers: { "Content-Type": "application/json" },
+    method: "GET",
+  })
+    .then((response) => response.json())
+    .then((data) => {
+ 
+      setCampuses(data); // Assuming data is an array of campuses
+    })
+    .catch((error) => console.error("Error fetching campuses:", error));
+}, []);
+
+   useEffect(() => {
+  fetch("/api/colleges", {
+    headers: { "Content-Type": "application/json" },
+    method: "GET",
+  })
+    .then((response) => response.json())
+    .then((data) => {
+    
+      setColleges(data); // Assuming data is an array of campuses
+    })
+    .catch((error) => console.error("Error fetching campuses:", error));
+}, []);
+
+
+
+   
+
+
+
 
   
   
-  useEffect(()=>{
-   ajax("/api/departments/incollege","GET",user.jwt)
-   .then(
-   (departmentData)=>{
-   setDepartments(departmentData);
-   setCollege(departmentData[0].college.name);
-   }
-   );
-  },[])
+     useEffect(() => {
+  fetch("/api/departments", {
+    headers: { "Content-Type": "application/json" },
+    method: "GET",
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      
+      setDepartments(data); // Assuming data is an array of campuses
+    })
+    .catch((error) => console.error("Error fetching campuses:", error));
+}, []);
+
+
+   
+     useEffect(() => {
+  fetch("/api/blocks", {
+    headers: { "Content-Type": "application/json" },
+    method: "GET",
+  })
+    .then((response) => response.json())
+    .then((data) => {
+     
+      setBlocks(data); // Assuming data is an array of campuses
+    })
+    .catch((error) => console.error("Error fetching campuses:", error));
+}, []);
   
 
   
@@ -55,7 +107,7 @@ const RegisterStudent = () => {
     gender: 'male',
     phoneNumber: '',
     year: '',
-    semister: '',
+    semister: '1',
     roomNo: '',
     block: {},
     department:{},
@@ -66,7 +118,7 @@ const RegisterStudent = () => {
     e.preventDefault();
     // Handle form submission, you can send data to the server here
     console.log(formData);
-    if(formData.fname!=''&&formData.mname
+    /*if(formData.fname!=''&&formData.mname
     !=''&&formData.lname!='' &&
     formData.email!='',formData.gender!=''&&formData.phoneNumber!=''
     &&formData.year!=''&&formData.semister!=''&&formData.roomNo!=''&&blockName!='Select Block'&&departmentName!='Select Department'){
@@ -80,30 +132,77 @@ const RegisterStudent = () => {
     }
     else{
     alert("please fill all required fileds");
-    }
+    }*/
   };
+  
+  
+  //filter colleges
+ useEffect(() => {
+  const filteredColleges = colleges.filter((eachCollege) => 
+    eachCollege.campus.name === selectedCampus
+  );
+  
+  setSelectedColleges(filteredColleges); 
+  setSelectedCollege("Select College");
+}, [selectedCampus, colleges]);
+
+ //filter Blocks
+    //filter colleges
+ useEffect(() => {
+  const filteredBlocks = blocks.filter((eachBlock) => 
+    eachBlock.campus.name === selectedCampus
+  )
+  setSelectedBlocks(filteredBlocks); 
+  setSelectedBlock("Select  Block");
+}, [selectedCampus, blocks]);
+
+  //filter departments
+   useEffect(() => {
+  const filteredDepartments = departments.filter((eachDepartment) => 
+    eachDepartment.college.name === selectedCollege
+  );
+
+  setSelectedDepartments(filteredDepartments); 
+  setSelectedDepartment("Select Department");
+}, [selectedCollege, departments]);
+  
   
   useEffect(()=>{
       departments.map((eachDepartment)=>{
-      if(eachDepartment.name==departmentName){
+      setSelectedYear('Select Year')
+      if(eachDepartment.name==selectedDepartment){
+        setFinalYear(eachDepartment.finalYear);
        const copyForm={...formData}
        copyForm.department=eachDepartment;
        setFormData(copyForm);
       }
     });
-  },[departmentName]);
+  },[selectedDepartment]);
   
  
-   useEffect(()=>{
-   console.log("hello hello hello: "+blockName);
+  useEffect(()=>{
+   console.log("hello hello hello: "+selectedBlock);
      blocks.map((eachBlock)=>{
-      if(eachBlock.name+"-0"+eachBlock.blockNo==blockName){
+      if(eachBlock.name+"-0"+eachBlock.blockNo==selectedBlock){
+        console.log(eachBlock);
        const copyForm={...formData}
        copyForm.block=eachBlock;
        setFormData(copyForm);
       }
     });
-  },[blockName]);
+  },[selectedBlock]);
+  
+  
+     useEffect(() => {
+        console.log(selectedYear);
+        // Update formData with the selectedYear
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            year: selectedYear, // Update the year in formData
+        }));
+    }, [selectedYear]);
+  
+  
    
 
   const handleChange = (e) => {
@@ -175,20 +274,29 @@ const RegisterStudent = () => {
             <div className="mt-5">
               <div className="row justify-content-center">
                 <div className="col-md-8 col-lg-6 detail">
-                  <div className="mb-3">
-                    <label className="form-label labelM">Email</label>
-                    <input
-                      type="text"
-                      className="form-control inputM"
-                      value={formData.email}
-                      onChange={handleChange}
-                      name="email"
-                    />
-                  </div>
+                <div className="mb-3">
+  <label className="form-label labelM">Email</label>
+  <input
+    type="email"
+    className="form-control inputM"
+    value={formData.email}
+    onChange={handleChange}
+    name="email"
+    required
+    pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"
+  />
+  {!formData.email && (
+    <div className="text-danger">Email is required.</div>
+  )}
+  {formData.email && !formData.email.includes("@") && (
+    <div className="text-danger">Please enter a valid email containing '@'.</div>
+  )}
+</div>
+
                  <div className="mb-3">
   <label className="form-label labelM">Gender</label>
   <div style={{backgroundColor:"#192800",color:"white"}}>
-    <label className="form-check-label">
+    <label className="form-check-label" style={{"marginRight":"10%"}}>
       <input
         type="radio"
         className="form-check-input"
@@ -241,49 +349,67 @@ const RegisterStudent = () => {
                     
                     <DropdownButton 
                      variant="info"
-                    title={campus}
+                    title={selectedCampus}
+                    onSelect={
+                         (selectedElement)=>{
+                           setSelectedCampus(selectedElement)
+                         }
+                        }
                      >
-                   
-                       <Dropdown.Item key={campus}
-                       eventKey={campus}
-                       className="inputM"
-                       >
-                       {campus}
-                       </Dropdown.Item>
+                       {
+                      campuses.map((campus)=>(
+                      <Dropdown.Item
+                        className="inputM"
+                        key={campus.id}
+                        eventKey={campus.name}>
+                      {campus.name}
+                      </Dropdown.Item>
+                      ))
+                    }
                       
                      </DropdownButton>
                   </div>
-                  <div className="mb-3">
+                  
+                    <div className="mb-3">
                     <label className="form-label labelM">College</label>
                     
                     <DropdownButton 
                      variant="info"
-                     
-                    title={college}
-                   >
-                    
-                       <Dropdown.Item key={college}
-                       eventKey={college}
-                       className="inputM"
-                       >
-                       {college}
-                       </Dropdown.Item>
-                     
+                    title={selectedCollege}
+                    onSelect={
+                         (selectedElement)=>{
+                           setSelectedCollege(selectedElement)
+                         }
+                        }
+                     >
+                       {
+                      selectedColleges.map((college)=>(
+                      <Dropdown.Item
+                        className="inputM"
+                        key={college.id}
+                        eventKey={college.name}>
+                      {college.name}
+                      </Dropdown.Item>
+                      ))
+                    }
+                      
                      </DropdownButton>
                   </div>
+                  
+                 
                   <div className="mb-3">
                     <label className="form-label labelM">Department</label>
                     <DropdownButton
                         variant="info"
-                        title={departmentName}
+                        title={selectedDepartment}
                         
                         onSelect={
                          (selectedElement)=>{
-                           setDepartmentName(selectedElement)
+                           setSelectedDepartment(selectedElement)
                          }
                         }>
                     {
-                      departments.map((department)=>(
+                      selectedDepartments.map((department)=>(
                       <Dropdown.Item
                         className="inputM"
                         key={department.id}
@@ -294,16 +420,29 @@ const RegisterStudent = () => {
                     }
                     </DropdownButton>
                   </div>
-                  <div className="mb-3">
-                    <label className="form-label labelM">Year</label>
-                    <input
-                      type="number"
-                      className="form-control inputM"
-                      value={formData.year}
-                      onChange={handleChange}
-                      name="year"
-                    />
-                  </div>
+                  
+                  
+                  
+                  
+                  
+                <div className="mb-3">
+  <label className="form-label labelM">Year</label>
+  <DropdownButton
+    variant="info"
+    title={selectedYear}
+    onSelect={(selectedElement) => {
+      setSelectedYear(selectedElement);
+    }}
+  >
+    {Array.from({ length: finalYear }).map((_, i) => (
+      <Dropdown.Item className="inputM" key={i+1} eventKey={i+1}>
+        {i+1}
+      </Dropdown.Item>
+    ))}
+  </DropdownButton>
+</div>
+
+                  
                 </div>
               </div>
             </div>
@@ -317,35 +456,53 @@ const RegisterStudent = () => {
             <div className="mt-5">
               <div className="row justify-content-center">
                 <div className="col-md-8 col-lg-6 detail">
-                 <div className="mb-3">
+                
+      <div className="mb-3">
   <label className="form-label labelM">Semester</label>
-  <input
-    type="number"
-    className="form-control inputM"
-    value={formData.semister}
-    onChange={handleChange}
-    name="semister"
-    min="1"
-    max="2"
-    required
-  />
-  {formData.semister && (formData.semister < 1 || formData.semister > 2) && (
-    <div className="text-danger">Please enter 1 or 2 for semester.</div>
-  )}
+   <div style={{backgroundColor:"#192800",color:"white"}}>
+     <label className="form-check-label" style={{"marginRight":"10%"}}htmlFor="semester1">
+      <input
+        type="radio"
+        className="form-check-input"
+        id="semester1"
+        value="1"
+        checked={formData.semister === '1'}
+        onChange={handleChange}
+        name="semister"
+        required
+      />
+     1</label>
+   
+     <label className="form-check-label" htmlFor="semester2">
+      <input
+        type="radio"
+        className="form-check-input"
+        id="semester2"
+        value="2"
+        checked={formData.semister === '2'}
+        onChange={handleChange}
+        name="semister"
+        required
+      />
+     2</label>
+  
+  </div>
+ 
 </div>
+
 
                    <div className="mb-3">
                     <label className="form-label labelM ">Block</label>
                     <DropdownButton
                         variant="info"
-                        title={blockName}
+                        title={selectedBlock}
                         onSelect={
                          (selectedElement)=>{
-                           setBlockName(selectedElement)
+                           setSelectedBlock(selectedElement)
                          }
                         }>
                     {
-                      blocks.map((block)=>(
+                      selectedBlocks.map((block)=>(
                       <Dropdown.Item
                         key={block.id}
                         eventKey={block.name+"-0"+block.blockNo}
@@ -379,7 +536,7 @@ const RegisterStudent = () => {
 
 return (
   <div className="justify-content-center">
-         <Header/>
+        
         <form onSubmit={handleSubmit}>
           {renderFormStep()}
           <div className="text-center">

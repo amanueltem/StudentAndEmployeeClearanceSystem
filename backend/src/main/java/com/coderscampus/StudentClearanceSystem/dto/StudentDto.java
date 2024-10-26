@@ -6,6 +6,7 @@ import com.coderscampus.StudentClearanceSystem.domain.Department;
 import lombok.Data;
 @Data
 public class StudentDto {
+    private String studentId;
     private String fname;
     private String mname;
     private String lname;

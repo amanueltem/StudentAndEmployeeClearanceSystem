@@ -6,21 +6,50 @@ import {useEffect,useState} from 'react'
 import {useUser} from "../../UserProvider/index"
 import {useNavigate} from 'react-router-dom'
 import ajax from "../../services/fetchService"
+import Swal from 'sweetalert2';
 const ViewStudent = () => {
 const user=useUser();
 const [datas,setDatas]=useState([]);
 const navigate=useNavigate();
 useEffect(()=>{
   ajax('/api/students','GET',user.jwt)
-  .then((data)=>setDatas(data));
+  .then((data)=>{setDatas(data);
+  console.log(data);});
 },[]);
-const handleDelete=(studentId)=>{
-  ajax(`/api/students/${studentId}`,'delete',user.jwt);
-       const datasCopy=[...datas]
-       const i=datasCopy.findIndex(data=>data.id===studentId);
-       datasCopy.splice(i,1);
-       setDatas(datasCopy);
+
+
+const handleDelete = (studentId) => {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "This student will be permanently deleted!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!',
+    cancelButtonText: 'Cancel'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      ajax(`/api/students/${studentId}`, 'delete', user.jwt);
+      const datasCopy = [...datas];
+      const i = datasCopy.findIndex(data => data.id === studentId);
+      datasCopy.splice(i, 1);
+      setDatas(datasCopy);
+
+      Swal.fire(
+        'Deleted!',
+        'The student has been deleted.',
+        'success'
+      );
+    }
+  });
+};
+
+const handleUpdate=()=>{
+  alert("Update Student");
 }
+
+
   return (
     <div>
          <Header/>
@@ -44,7 +73,7 @@ const handleDelete=(studentId)=>{
 
                                     <Button   className={`${styles.btn}`}
                                     variant="primary" onClick={(e) => {
-                                       
+                                       navigate(`/update_student/${data.id}`);
                                     }}>
                                         More
                                     </Button>

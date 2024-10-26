@@ -47,7 +47,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
              }).and();
              
       http.authorizeRequests()
-           .antMatchers("/api/auth/**").permitAll()
+           .antMatchers("/api/auth/**","/api/tempo_students"
+           ,"/api/blocks","/api/campuses","/api/colleges"
+           ,"/api/departments").permitAll()
            .anyRequest().authenticated();
       http.addFilterBefore(jwtFilter,UsernamePasswordAuthenticationFilter.class);
     }

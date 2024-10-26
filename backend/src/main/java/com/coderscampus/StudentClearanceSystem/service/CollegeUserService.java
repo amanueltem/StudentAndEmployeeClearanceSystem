@@ -10,12 +10,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.coderscampus.StudentClearanceSystem.domain.Account;
-import com.coderscampus.StudentClearanceSystem.domain.Authority;
-import com.coderscampus.StudentClearanceSystem.domain.CollegeUser;
+import com.coderscampus.StudentClearanceSystem.domain.*;
+import com.coderscampus.StudentClearanceSystem.util.*;
 import com.coderscampus.StudentClearanceSystem.dto.StaffDto;
 import com.coderscampus.StudentClearanceSystem.enums.AuthorityEnum;
-import com.coderscampus.StudentClearanceSystem.repository.CollegeUserRepository;
+import com.coderscampus.StudentClearanceSystem.repository.*;
 
 @Service
 public class CollegeUserService {
@@ -24,13 +23,15 @@ public class CollegeUserService {
     @Autowired
     private AccountService accountService;
     @Autowired
+    private AccountRepository accountRepo;
+    @Autowired
     private AuthorityService authService;
     public CollegeUser saveUser(StaffDto staff){
         CollegeUser newUser=new CollegeUser();
         newUser.setFname(staff.getFname());
         newUser.setMname(staff.getMname());
         newUser.setLname(staff.getLname());
-        newUser.setEmail(staff.getEmail());
+      
         newUser.setPosition(staff.getRoleName());
         Boolean g;
         if(staff.getGender()=="Male"){
@@ -44,12 +45,24 @@ public class CollegeUserService {
         newUser.setCollege(staff.getCollege());
 
         Account newAccount=new Account();
-        newAccount.setUsername(newUser.getEmail());
+        String staffId;
+        Account userInDB;
+        while(true){
+            staffId=IDGenerator.generateID("staff");
+           userInDB=accountRepo.findByUsername(staffId).orElse(null);
+           if(userInDB!=null){
+            newAccount.setUsername(staffId);
+            break;
+            }
+        }
+        
+     
         PasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
         String password=passwordEncoder.encode(newUser.getFname());
         newAccount.setPassword(password);
         newAccount.setCreatedDate(LocalDate.now());
         newAccount.setIsDefault(true);
+        newAccount.setEmail(staff.getEmail());
 
         Account savedAccount=accountService.saveAccount(newAccount);
         Authority authority=new Authority();
@@ -59,11 +72,6 @@ public class CollegeUserService {
         authService.saveAuthority(authority);
 
         newUser.setAccount(savedAccount);
-        Optional <CollegeUser> userOptional=collegeUserRepo.
-        findByEmail(newUser.getEmail());
-        if(userOptional.isPresent()){
-            new IllegalStateException("Email already taken");
-        }
         
         return collegeUserRepo.save(newUser);
     }

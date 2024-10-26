@@ -11,8 +11,6 @@ import com.coderscampus.StudentClearanceSystem.domain.Department;
 import com.coderscampus.StudentClearanceSystem.domain.DepartmentUser;
 
 public interface DepartmentUserRepository extends JpaRepository<DepartmentUser,Long>{
-    @Query("SELECT s FROM DepartmentUser s WHERE s.email=?1")
-    Optional<DepartmentUser> findByEmail(String email);
     List<DepartmentUser> findByPosition(String position);
     List <DepartmentUser> findByDepartment(Department department);
     Optional <DepartmentUser> findByAccount(Account account);

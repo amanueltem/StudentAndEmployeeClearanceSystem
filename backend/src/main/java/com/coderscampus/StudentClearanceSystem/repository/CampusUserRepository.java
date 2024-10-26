@@ -10,8 +10,6 @@ import com.coderscampus.StudentClearanceSystem.domain.Account;
 import com.coderscampus.StudentClearanceSystem.domain.CampusUser;
 
 public interface CampusUserRepository extends JpaRepository<CampusUser,Long> {
-    @Query("SELECT s FROM  CampusUser s WHERE s.email=?1")
-    Optional<CampusUser> findByEmail(String email);
     List<CampusUser> findByPosition(String position);
     Optional<CampusUser> findByAccount(Account account);
 }

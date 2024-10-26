@@ -4,6 +4,7 @@ import LessPrivate from "./PrivateRoute/LessPrivate";
 import {Routes, Route } from 'react-router-dom';
 import RegistrarDashboard from './RegistrarDashboard/index'
 import RegisterStudent from './RegistrarDashboard/RegisterStudent/index'
+import UpdateStudent from './RegistrarDashboard/UpdateStudent/index';
 import ViewStudent from './RegistrarDashboard/ViewStudent/index'
 import StudentDashboard from './StudentDashboard/index'
 import ResponseDetail from './StudentDashboard/ViewStatus/ResponseDetail'
@@ -23,6 +24,7 @@ import CampusPolice from './AdminDashboard/ViewStaff/CampusView/CampusPolice'
 import ViewStudents from './AdminDashboard/ViewStudent/index'
 import ApplyClearance from './StudentDashboard/ApplyClearance/index'
 import ViewStatus from './StudentDashboard/ViewStatus/index'
+import Register from './StudentDashboard/RegisterStudent/index'
 import RequestView from './StaffDashboard/Requests/RequestView'
 import {useEffect,useState } from "react";
 import { jwtDecode } from "jwt-decode";
@@ -40,6 +42,7 @@ import "./HomePage.css";
 import LongForm from './RegistrarDashboard/LongForm'
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 
 const App = () => {  
       const user=useUser();
@@ -59,6 +62,7 @@ const App = () => {
         <Routes>
          
           <Route path="/" element={<Login/>}/>
+          <Route path="/register" element={<Register/>}/>
           <Route path="/forgot_password" element={<ForgotPassword/>}/>
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/reset_default" element={
@@ -193,6 +197,23 @@ const App = () => {
           )
           }
           />
+          
+          
+            
+          <Route path="/update_student/:id" element={
+          roles.find((role)=>role==="ROLE_REGISTRAR")?
+          ( 
+          <PrivateRoute>
+          <UpdateStudent/>
+          </PrivateRoute>
+          )
+          :
+          (<PrivateRoute>
+          </PrivateRoute>
+          )
+          }
+          />
+          
           
           <Route path="/view_staff" element={
           roles.find((role)=>role==="ROLE_ADMIN")?

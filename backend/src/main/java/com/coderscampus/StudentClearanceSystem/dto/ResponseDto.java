@@ -29,7 +29,7 @@ public class ResponseDto {
         responseInfo=clResponse.getResponseInfo();
         status=clResponse.getStatus();
         phoneNumber=clResponse.getResponsedBy().getPhoneNumber();
-        position=clResponse.getResponsedBy().getPostion();
+        position=clResponse.getResponsedBy().getPosition();
     }
  public Long getId(){return id;}
  public String getFname(){return fname;}

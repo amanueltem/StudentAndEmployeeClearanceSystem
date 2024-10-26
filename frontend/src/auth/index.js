@@ -110,6 +110,10 @@ const Login = () => {
                   <FaKey style={{ marginRight: '8px' }} />
                   Forgot Password
                 </Link>
+                <Link to="/register" style={{ margin: '10px 0', fontSize: '2rem', display: 'flex', alignItems: 'center' }}>
+
+                  Register
+                </Link>
               </div>
             </form>
           </div>
