@@ -35,7 +35,6 @@ build/
 #### react ####
 /frontend/build
 /frontend/node_modules
-/frontend/public
 !**/src/main/**/build/
 !**/src/test/**/build/
 

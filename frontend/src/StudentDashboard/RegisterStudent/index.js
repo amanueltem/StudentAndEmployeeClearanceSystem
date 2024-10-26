@@ -3,7 +3,7 @@ import "../../styles/Registration.css";
 import { useNavigate } from 'react-router-dom';
 import { Button,Dropdown,DropdownButton,ButtonGroup,Row,Col} from 'react-bootstrap';
 import ajax from "../../services/fetchService"
-//import {useUser} from "../../UserProvider/index"
+import {useUser} from "../../UserProvider/index"
 
 import Header from "../header/Header";
 const RegisterStudent = () => {
@@ -14,7 +14,7 @@ const RegisterStudent = () => {
  
   
   const [departments,setDepartments]=useState([]);
-  //const user=useUser();
+  const user=useUser();
   const [campuses,setCampuses]=useState([]);
     const [blocks,setBlocks]=useState([]);
   const [colleges,setColleges]=useState([]);
@@ -118,11 +118,11 @@ const RegisterStudent = () => {
     e.preventDefault();
     // Handle form submission, you can send data to the server here
     console.log(formData);
-    /*if(formData.fname!=''&&formData.mname
+    if(formData.fname!=''&&formData.mname
     !=''&&formData.lname!='' &&
     formData.email!='',formData.gender!=''&&formData.phoneNumber!=''
-    &&formData.year!=''&&formData.semister!=''&&formData.roomNo!=''&&blockName!='Select Block'&&departmentName!='Select Department'){
-  ajax('/api/students','POST',user.jwt,formData).
+    &&formData.year!=''&&formData.semister!=''&&formData.roomNo!=''&&selectedBlock!='Select Block'&&selectedDepartment!='Select Department'){
+  ajax('/api/tempo_students','POST',user.jwt,formData).
     then((data)=>{
      if(data==='conflict')
      alert('Email already taken!')
@@ -132,7 +132,7 @@ const RegisterStudent = () => {
     }
     else{
     alert("please fill all required fileds");
-    }*/
+    }
   };
   
   
