@@ -53,6 +53,7 @@ public class AuthController {
     @GetMapping("validate")
     public ResponseEntity<?> validateToken(@RequestParam String token,
     @AuthenticationPrincipal Account user){
+        System.out.println("\n\n\n\n\n\n hola hola");
         Boolean isTokenValid=jwtUtil.validateToken(token, user);
         return ResponseEntity.ok(isTokenValid);
     }

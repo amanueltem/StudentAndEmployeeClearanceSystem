@@ -46,6 +46,16 @@ public class StudentController {
         }
     }
 
+    @GetMapping("self")
+    public ResponseEntity<?> getStudentByAccount(@AuthenticationPrincipal Account account){
+        if(AuthorityUtil.hasRole(AuthorityEnum.ROLE_STUDENT.name(),account)){
+            return ResponseEntity.ok(studentService.getStudent(account));
+        }
+        else{
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+    }
+
     @GetMapping("all")
     public ResponseEntity<?> getAllStudents(@AuthenticationPrincipal Account account) {
         if (AuthorityUtil.hasRole(AuthorityEnum.ROLE_ADMIN.name(), account)) {

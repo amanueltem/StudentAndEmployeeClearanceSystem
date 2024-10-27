@@ -314,6 +314,7 @@ const ViewStudentTemp = () => {
                       size="lg"
                       className="me-5"
                       onClick={handleSubmit}
+                      variant="success"
                     >
                       Register
                     </Button>

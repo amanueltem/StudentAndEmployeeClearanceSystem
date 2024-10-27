@@ -121,15 +121,8 @@ const App = () => {
           )
           }/>
          
-           <Route path="/register" element={
-              roles.find((role)=>role ==="ROLE_REGISTRAR")?
-          (
-           <PrivateRoute>
-           <RegisterStudent/>
-           </PrivateRoute>
-          )
-          :
-          (
+           <Route path="/register_staff" element={
+          
           roles.find((role)=>role==="ROLE_ADMIN")?
           (
            <PrivateRoute>
@@ -141,7 +134,7 @@ const App = () => {
           
           </PrivateRoute>
           )
-          )
+       
           }/>
           
           <Route path="/apply_clearance" element={

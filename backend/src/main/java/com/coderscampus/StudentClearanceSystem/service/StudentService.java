@@ -108,6 +108,12 @@ public class StudentService {
         return  studentRepo.findById(id)
                                        .orElseThrow(() -> new NoSuchElementException("Student not found"));
     }
+
+
+   public Student getStudent(Account account){
+    return studentRepo.findByAccount(account).orElse(null);
+   }
+
     @Transactional
     public Student deleteStudent(Long id){
         Student student=studentRepo.findById(id).orElse(new Student());

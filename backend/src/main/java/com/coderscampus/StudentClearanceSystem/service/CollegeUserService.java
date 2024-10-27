@@ -41,14 +41,10 @@ public class CollegeUserService {
         Account newAccount=new Account();
         String staffId;
         Account userInDB;
-        while(true){
+       
             staffId=IDGenerator.generateID("staff");
-           userInDB=accountRepo.findByUsername(staffId).orElse(null);
-           if(userInDB!=null){
             newAccount.setUsername(staffId);
-            break;
-            }
-        }
+        
         
      
         PasswordEncoder passwordEncoder=new BCryptPasswordEncoder();

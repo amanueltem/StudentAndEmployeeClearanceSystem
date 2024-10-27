@@ -6,7 +6,11 @@ import ajax from "../../services/fetchService"
 import {useUser} from "../../UserProvider/index"
 import Header from '../header/Header';
 import "../../styles/Registration.css";
+import Loader from "../../components/Loader";
+import { toast } from "react-toastify";
+ 
 const RegisterEmployee = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(1);
   const [colleges,setColleges]=useState([]);
   const [campuses,setCampuses]=useState([]);
@@ -30,7 +34,7 @@ const RegisterEmployee = () => {
     setCampuses(campusData);
     }
     );
-  },[])
+  },[user.jwt])
   
   useEffect(()=>{
   ajax("/api/blocks","GET",user.jwt)
@@ -38,7 +42,7 @@ const RegisterEmployee = () => {
       setBlocks(blockData);
       }
       );
-      },[])
+      },[user.jwt])
   useEffect(()=>{
      ajax("/api/colleges","GET",user.jwt)
      .then(
@@ -46,7 +50,7 @@ const RegisterEmployee = () => {
      setColleges(collegeData)
      });
      
-  },[]);
+  },[user.jwt]);
   
   
   useEffect(()=>{
@@ -56,7 +60,7 @@ const RegisterEmployee = () => {
    setDepartments(departmentData);
    }
    );
-  },[])
+  },[user.jwt])
   
 
     useEffect(()=>{
@@ -146,7 +150,7 @@ const RegisterEmployee = () => {
     mname: '',
     lname: '',
     email: '',
-    gender: '',
+    gender: 'male',
     phoneNumber: '',
     roleName:'',
     campus:{},
@@ -160,71 +164,86 @@ const RegisterEmployee = () => {
   const handleSubmit = (e) => {
   
    e.preventDefault();
+   setIsLoading(true)
    
     
     console.log(formData);
     
     if(roleValue==="Select Role"){
-     alert("Please Select Role")
+      setIsLoading(false);
+     toast.error("Please Select Role")
     }
     else if(formData.fname!=''&&formData.mname
     !=''&&formData.lname!='' &&
     formData.email!='',formData.gender!=''&&formData.phoneNumber!='' && campusName!=='Select Campus'){
      if((roleValue==='Library Circulation' || roleValue==='Registrar' ||
         roleValue==='Department Head' || roleValue==='College Dean') && collegeName==='Select College'){
-          alert("Please Select College");
+          toast.error("Please Select College");
         }
      else if(roleValue==='Proctor' && blockName==='Select Block'){
-       alert("Please Select Block");
+       setIsLoading(false)
+       toast.error("Please Select Block");
+
      }  
      else if(roleValue==='Department Head' && departmentName==='Select Department'){
-       alert("Please Select Department");
+       setIsLoading(false)
+       toast.error("Please Select Department");
      } 
      else{
        
        if(roleValue==='Department Head'){
          ajax('/api/dept_users','POST',user.jwt,formData).
          then((data)=>{
-           if(data==='conflict') alert('Email already taken or There is another Department Head for '+formData.department.name);
-           else alert(roleValue+' successfuly Registered!');
+           setIsLoading(false)
+           if(data==='conflict') toast.error('Email already taken or There is another Department Head for '+formData.department.name);
+           else toast.success(roleValue+' successfuly Registered!');
          });
          
          }
          else if (roleValue==='Library Circulation' || roleValue==='Registrar' || roleValue==='College Dean'){
             ajax('/api/college_users','POST',user.jwt,formData).
             then((data)=>{
+              setIsLoading(false)
             if(data==='conflict'){ 
-            
+            setIsLoading(false)
             if(roleValue=='College Dean')
-             alert("Email alrady taken! or There is another College dean for "+formData.college.name);
+             toast.error("Email alrady taken! or There is another College dean for "+formData.college.name);
              else{
-             alert('Email already taken! ');
+             toast.error('Email already taken! ');
             }
             }
-            else alert(roleValue+' sucessfuly registered!');
+            else 
+            {
+                 setIsLoading(false)
+              toast.success(roleValue+' sucessfuly registered!');
+          }
          });
          }
          else if(roleValue==='Proctor'){
-         console.log("inside proctor");
+           
+  
           ajax('/api/proctors','POST',user.jwt,formData).
           then((data)=>{
-          if(data==='conflict') alert('Email already taken!');
-          else alert('Proctor sucessfuly registered!')
+             setIsLoading(false);
+          if(data==='conflict') toast.error('Email already taken!');
+          else toast.success('Proctor sucessfuly registered!')
           }
           );
          }
          else{
            ajax('/api/campus_users','POST',user.jwt,formData).
            then((data)=>{
-           if(data==='conflict') alert('Email already taken!');
-           else alert(roleValue+' Sucessfuly registered!');
+             setIsLoading(false)
+           if(data==='conflict') toast.error('Email already taken!');
+           else toast.success(roleValue+' Sucessfuly registered!');
             });
             }
          }
     
     }
     else{
-    alert("please fill all required fileds");
+       setIsLoading(false)
+    toast.error("please fill all required fileds");
     }
   };
   
@@ -340,26 +359,62 @@ const RegisterEmployee = () => {
             <div className="mt-5">
               <div className="row justify-content-center">
                 <div className="col-md-8 col-lg-6 forms">
-                  <div className="mb-3">
-                    <label>Email</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      value={formData.email}
-                      onChange={handleChange}
-                      name="email"
-                    />
-                  </div>
-                  <div className="mb-3">
-                    <label>Gender</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      value={formData.gender}
-                      onChange={handleChange}
-                      name="gender"
-                    />
-                  </div>
+                            <div className="mb-3">
+  <label className="form-label labelM">Email</label>
+  <input
+    type="email"
+    className="form-control inputM"
+    value={formData.email}
+    onChange={handleChange}
+    name="email"
+    required
+    pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"
+  />
+  {!formData.email && (
+    <div className="text-danger">Email is required.</div>
+  )}
+  {formData.email && !formData.email.includes("@") && (
+    <div className="text-danger">Please enter a valid email containing '@'.</div>
+  )}
+</div>
+
+
+
+              
+                 <div className="mb-3">
+  <label className="form-label labelM">Gender</label>
+  <div style={{backgroundColor:"#192800",color:"white"}}>
+    <label className="form-check-label" style={{"marginRight":"10%"}}>
+      <input
+        type="radio"
+        className="form-check-input"
+        value="male"
+        checked={formData.gender === "male"}
+        onChange={handleChange}
+        name="gender"
+      />
+      Male
+    </label>
+    <label className="form-check-label ms-3">
+      <input
+        type="radio"
+        className="form-check-input"
+        value="female"
+        checked={formData.gender === "female"}
+        onChange={handleChange}
+        name="gender"
+      />
+      Female
+    </label>
+  </div>
+</div>
+
+
+
+
+
+
+
                   <div className="mb-3">
                     <label>Phone Number</label>
                     <input
@@ -596,6 +651,8 @@ const RegisterEmployee = () => {
 
 return (
   <div className="justify-content-center">
+
+         {isLoading && <Loader />}
    <Header/>
         <form onSubmit={handleSubmit}>
           {renderFormStep()}

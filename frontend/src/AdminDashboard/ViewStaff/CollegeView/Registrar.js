@@ -7,17 +7,23 @@ import {useEffect,useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import ViewStaffHeader from "../../header/ViewStaffHeader"
 import styles from "../../../styles/Card.module.scss";
+import Loader from "../../../components/Loader";
 const Registrar = () => {
 const [datas,setDatas]=useState([]);
 const user=useUser();
 const navigate=useNavigate();
+ const [isLoading, setIsLoading] = useState(false);
  useEffect(()=>{
+    setIsLoading(true)
   ajax('/api/college_users/registrars','GET',user.jwt).
-  then((data)=>setDatas(data));
+  then((data)=>{
+    setIsLoading(false)
+    setDatas(data)
+});
  },[]);
   return (
     <div>
-   
+            {isLoading && <Loader />}
          <ViewStaffHeader/>
           <h1 style={{"marginLeft":"3rem","margin":"5%"}}>List of Registrars</h1>
           {datas ? (
@@ -31,8 +37,8 @@ const navigate=useNavigate();
                                     <Card.Text Sstyle={{ marginTop: "1em" }}  className={`${styles.card_text}`}>
                                         <p><b>Name</b>: {data.fname
                                         +" "+data.mname}</p>
-                                        <p><b>email</b>: {data.email}</p>
-                                        <p><b>ID</b>: {data.id}</p>
+                                        <p><b>email</b>: {data.account.email}</p>
+                                        <p><b>ID</b>: {data.account.username}</p>
                                        
                                     </Card.Text>
 

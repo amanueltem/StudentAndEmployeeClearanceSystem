@@ -7,7 +7,8 @@ import { toast } from "react-toastify";
 import ajax from "../services/fetchService";
 import { FaHome, FaEye, FaEyeSlash } from "react-icons/fa"; // Ensure you import these icons
 import { useUser } from "../UserProvider/index";
-
+import {jwtDecode} from "jwt-decode"
+ 
 const ResetDefault = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -19,6 +20,7 @@ const ResetDefault = () => {
     const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State for confirm password visibility
     const user = useUser();
     const navigate = useNavigate();
+    const decoded_jwt = jwtDecode(user.jwt);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,7 +37,47 @@ const ResetDefault = () => {
                 setIsLoading(false);
                 toast.success("Password has been reset successfully.");
                 setMessage('Password has been reset successfully.');
-                navigate("/");
+                
+                    const reqBody = {
+      username: decoded_jwt.sub,
+      password: password,
+    };
+
+               
+
+
+
+
+
+
+
+      fetch("/api/auth/login", {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST",
+      body: JSON.stringify(reqBody),
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          return Promise.all([response.json(), response.headers]);
+        } else return Promise.reject("Invalid login attempt");
+      })
+      .then(([body, headers]) => {
+        user.setJwt(headers.get("authorization"));
+        toast.success("Login Successful...");
+        setIsLoading(false);
+        window.location.href = "/dashboard"; // Or use navigate("/dashboard");
+      })
+      .catch((error) => {
+        console.log("Hello");
+        toast.error(error.message || "Invalid login attempt");
+        setIsLoading(false);
+      });
+
+
+
+
             } catch (error) {
                 setIsLoading(false);
                 toast.error("An error occurred. Please try again.");

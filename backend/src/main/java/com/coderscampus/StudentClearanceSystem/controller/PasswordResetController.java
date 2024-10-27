@@ -28,7 +28,9 @@ public class PasswordResetController {
     public String forgotPassword(@RequestParam("email") String email) {
     
         String token = userDetailsService.generatePasswordResetToken(email);
-        String resetUrl = "http://10.10.42.248:3000/reset-password?token=" + token;
+        System.out.println("\n\n\n\n\n..................................token="+token);
+        System.out.println(email);
+        String resetUrl = "http://10.10.42.244:3000/reset-password?token=" + token;
 
         emailService.sendEmail(email, "Password Reset Request", 
             "To reset your password, please click the link below:\n The link will be expired with in one Hour.\n\n" + resetUrl);
