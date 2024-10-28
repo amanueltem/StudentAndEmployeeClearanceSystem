@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.coderscampus.StudentClearanceSystem.domain.Account;
-import com.coderscampus.StudentClearanceSystem.domain.ClearanceResponse;
+import com.coderscampus.StudentClearanceSystem.domain.*;
+import com.coderscampus.StudentClearanceSystem.repository.*;
 import com.coderscampus.StudentClearanceSystem.enums.AuthorityEnum;
 import com.coderscampus.StudentClearanceSystem.service.ClearanceResponseService;
 import com.coderscampus.StudentClearanceSystem.util.AuthorityUtil;
@@ -22,6 +22,8 @@ import com.coderscampus.StudentClearanceSystem.util.AuthorityUtil;
 public class ClearanceResponseController {
     @Autowired
     private ClearanceResponseService responseService;
+    @Autowired
+    private ClearanceRequestRepository requestRepo;
     @GetMapping
     public ResponseEntity<?> findRequests(@AuthenticationPrincipal Account account){
         if(AuthorityUtil.hasRole(AuthorityEnum.ROLE_STUDENT.name(), account)){
@@ -53,7 +55,14 @@ public class ClearanceResponseController {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
      }
      else{
+        if(AuthorityUtil.hasRole(AuthorityEnum.ROLE_REGISTRAR.name(),account)){
+            ClearanceRequest request=clResponse.getClearanceRequest();
+            request.setStatus(clResponse.getStatus());
+            requestRepo.save(request);
+        }
         return ResponseEntity.ok(responseService.updateClearanceResponse(clResponse));
      }
     }
+
+
 }

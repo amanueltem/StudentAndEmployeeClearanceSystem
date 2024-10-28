@@ -5,6 +5,7 @@ import {useEffect,useState} from 'react';
 import { Button, Card ,Row,Col,Container} from "react-bootstrap";
 import StatusBadge from "../../StatusBadge/index";
 import {useNavigate} from 'react-router-dom'
+import Loader from "../../components/Loader";
 import "../../styles/Registration.css";
 const ResponseDetail=()=>
 {
@@ -12,13 +13,16 @@ const ResponseDetail=()=>
  const user=useUser();
  const [clearanceResponse,setClearanceResponse]=useState('');
  const navigate=useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
  const position={"ROLE_CAFETERIA":"Student Cafeteria","ROLE_DEPARTMENT_HEAD":"Deaprtment Head",
  "ROLE_COLLEGE_DEAN":"College Dean","ROLE_PROCTOR":"Proctor","ROLE_LIBRARY":"Librerian",
  "ROLE_REGISTRAR":"Registrar","ROLE_CAMPUS_POLICE":"Campus Police"};
  useEffect(()=>{
+    setIsLoading(true);
    ajax(`/api/responses/${responseId}`,'GET',user.jwt).
    then((data)=>{
    setClearanceResponse(data);
+   setIsLoading(false);
    });
  },[]);
  
@@ -44,6 +48,7 @@ const ResponseDetail=()=>
  <div>
                   
            <Header/>
+              {isLoading && <Loader />}
           <h1 style={{paddingLeft:"40%",paddingTop:"3%",fontSize:"4rem"}}>Response Details # {responseId}</h1>
            {
         clearanceResponse ?
@@ -74,7 +79,7 @@ const ResponseDetail=()=>
         variant="secondary"
         onClick={
         (e)=>{
-         navigate('/view_status');
+         navigate(-1);
         }
         }>
         Back

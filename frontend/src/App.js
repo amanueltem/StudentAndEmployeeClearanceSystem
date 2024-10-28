@@ -7,8 +7,13 @@ import RegisterStudent from './RegistrarDashboard/RegisterStudent/index'
 import UpdateStudent from './RegistrarDashboard/UpdateStudent/index';
 import ViewStudentTemp from "./RegistrarDashboard/ViewStudentTemp/index"
 import ViewStudent from './RegistrarDashboard/ViewStudent/index'
+
 import StudentDashboard from './StudentDashboard/index'
 import ResponseDetail from './StudentDashboard/ViewStatus/ResponseDetail'
+import StudentRequests from './StudentDashboard/ViewStatus/Requests'
+import ApplyClearance from './StudentDashboard/ApplyClearance/index'
+import ViewStatus from './StudentDashboard/ViewStatus/index'
+
 import AdminDashboard from './AdminDashboard/index'
 import StaffDashboard from './StaffDashboard/index'
 import PlaceForm from './StaffDashboard/Requests/index'
@@ -23,8 +28,7 @@ import Cafeteria from './AdminDashboard/ViewStaff/CampusView/Cafeteria'
 import Proctor from './AdminDashboard/ViewStaff/CampusView/Proctor'
 import CampusPolice from './AdminDashboard/ViewStaff/CampusView/CampusPolice'
 import ViewStudents from './AdminDashboard/ViewStudent/index'
-import ApplyClearance from './StudentDashboard/ApplyClearance/index'
-import ViewStatus from './StudentDashboard/ViewStatus/index'
+
 import Register from './StudentDashboard/RegisterStudent/index'
 import RequestView from './StaffDashboard/Requests/RequestView'
 import {useEffect,useState } from "react";
@@ -131,7 +135,7 @@ const App = () => {
            ):
            (
           <PrivateRoute>
-          
+          <ViewStatus/>
           </PrivateRoute>
           )
        
@@ -151,21 +155,7 @@ const App = () => {
           </PrivateRoute>)
           } />
           
-          
-          <Route path="/view_status" element={
-            roles.find((role)=>role==="ROLE_STUDENT")?
-            (
-            <PrivateRoute>
-            <ViewStatus/>
-            </PrivateRoute>
-            )
-            :
-            (
-            <PrivateRoute>
-            </PrivateRoute>
-            )
-            }
-            />
+     
             
           <Route path="/view_request" element={
           roles.find((role)=>role==="ROLE_DEPARTMENT_HEAD"||
@@ -181,8 +171,17 @@ const App = () => {
           </PrivateRoute>
           )
           :
+          (
+          roles.find((role)=>role==="ROLE_STUDENT") ?
+          (
+           <PrivateRoute>
+             <StudentRequests/>
+           </PrivateRoute>
+          )
+          :
           (<PrivateRoute>
           </PrivateRoute>
+          )
           )
           }
           />
@@ -201,8 +200,17 @@ const App = () => {
           </PrivateRoute>
           )
           :
+          (
+          roles.find((role)=>role==="ROLE_STUDENT")?
+          (
+          <PrivateRoute>
+            <ViewStatus/>
+          </PrivateRoute>
+          )
+          :
           (<PrivateRoute>
           </PrivateRoute>
+          )
           )
           }
           />

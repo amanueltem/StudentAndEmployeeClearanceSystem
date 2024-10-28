@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public enum ReasonEnum {
    WITHDRAWAL("Withdrawal"),
    IDREPLACEMENT("Id Replacement"),
-   ENDOFACEDAMICYEAR("End of Acadamic Year"),
+   ENDOFACEDAMICYEAR("End of Acadamy"),
    TRANSFER("Transfer");
    private String reasonName;
     ReasonEnum(String reasonName){

@@ -96,9 +96,11 @@ useEffect(()=>{
                     Apply Clearance
                   </NavLink>
               </li>
-              <li>
-                <NavLink to="/view_status" className={activeLink}>
-                View Status
+            
+
+               <li>
+                <NavLink to="/view_request" className={activeLink}>
+                View Requests
                 </NavLink>
               </li>
              

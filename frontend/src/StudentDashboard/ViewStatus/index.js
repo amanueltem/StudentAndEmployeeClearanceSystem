@@ -6,25 +6,37 @@ import {useState,useEffect} from 'react'
 import {useUser} from '../../UserProvider/index'
 import {Link} from 'react-router-dom'
 import Header from "../header/Header";
+import {useNavigate} from 'react-router-dom'
+import Loader from "../../components/Loader";
 const ViewStatus=()=>{
  const user=useUser();
  const [clearanceRequest,setClearanceRequest]=useState('');
  const [responsesData,setResponsesData]=useState('');
  const [responses,setResponses]=useState([]);
- const [step,setStep]=useState(1);
+ const requestId = window.location.href.split("/view_request/")[1];
+ const navigate=useNavigate();
+   const [isLoading, setIsLoading] = useState(false);
+
   useEffect(()=>{
-     ajax('api/requests/self','GET',user.jwt).
-     then((data)=>
-     {
-     setClearanceRequest(data[0]);
-     }
-     );
-  },[]);
+    setIsLoading(true);
+        ajax(`/api/requests/${requestId}`,"GET",user.jwt).
+        then((data)=>{
+           
+        setClearanceRequest(data);
+        setIsLoading(false)
+        });
+     },[]);
+
+
   useEffect(()=>{
-  ajax('api/responses','GET',user.jwt).
+    setIsLoading(true)
+  ajax(`/api/responses/details/${requestId}`,'GET',user.jwt).
   then((data)=>
   {
+  
+   
   setResponsesData(data);
+  setIsLoading(false)
   }
   );
   },[]);
@@ -55,18 +67,7 @@ const ViewStatus=()=>{
      responsesData.filter((response)=>response.position==='ROLE_REGISTRAR')[0]);
     setResponses(copyData);
   },[responsesData]);
-  const RequestFormatter=(col)=>{
-   return(
-        <Row>
-       <Col>
-        <label>{col.col1}</label>
-        </Col>
-        <Col>
-        <label>{col.col2}</label>
-        </Col>
-        </Row>
-   )
-  };
+  
   
     const ResponseFormatter=(col)=>{
    return(
@@ -102,19 +103,7 @@ const ViewStatus=()=>{
    )
   };
   
- const RequestDetails=()=>{
-    return(
-     <div class="detail">
-    
-     <RequestFormatter col1="Requester:" col2={clearanceRequest.requestedBy.fname
-     +" "+clearanceRequest.requestedBy.mname}/>
-     <RequestFormatter col1="Campus:" col2={clearanceRequest.requestedBy.department.college.campus.name}/>
-     <RequestFormatter col1="Department:" col2={clearanceRequest.requestedBy.department.name}/>
-     <RequestFormatter col1="Reason:" col2={clearanceRequest.requestedReason}/>
-     <RequestFormatter col1="Requested Date:" col2={clearanceRequest.requestedDate}/>  
-     </div>
-    )
- };
+
  
  
  const ResponseDetails = () => {
@@ -167,51 +156,21 @@ const ViewStatus=()=>{
    return (
  <div className="justify-content-center">
         <Header/>
+         {isLoading && <Loader />}
         {
          clearanceRequest ?
-         (
-          <div>
-            { step==1&& (
-            <>
-            <RequestDetails/>
-           
-              <Button
-              type="button"
-               size="lg"
-               className="mt-3 me-5"
-               onClick={
-               (e)=>
-               {setStep(step+1);
-               }
-               }>
-                ...More
-              </Button>
-            </>)
-            }
-            
-            
-            {step==2 &&(
-            <>
-            <ResponseDetails/>
-           
-               <Button
-                 variant="secondary"
-                 type="button"
-                 size="lg"
-                 className="mt-3 me-5"
-                 onClick={
-                 (e)=>{
-                   setStep(step-1);
-                 }
-                 }
-               >
-                 Back
-               </Button>
-          
-            </>
-            )
-            }
-          </div>
+         (<>
+         <ResponseDetails/>
+          <Button size="lg"
+        variant="secondary"
+        onClick={
+        (e)=>{
+         navigate('/view_request');
+        }
+        }>
+        Back
+        </Button>
+        </>
           ):
           (
           <div>

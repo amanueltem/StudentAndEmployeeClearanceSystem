@@ -4,11 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.coderscampus.StudentClearanceSystem.domain.Account;
 import com.coderscampus.StudentClearanceSystem.dto.StaffDto;
@@ -63,5 +59,19 @@ public class CampusUserController {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
             }
        
+    }
+
+
+
+         @DeleteMapping("/{staffId}")
+    public ResponseEntity<?> deleteStaff(@AuthenticationPrincipal Account account,
+                                           @PathVariable Long staffId) {
+     
+        if (AuthorityUtil.hasRole(AuthorityEnum.ROLE_ADMIN.name(), account)) {
+            campusUserService.deleteStaff(staffId);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
 }

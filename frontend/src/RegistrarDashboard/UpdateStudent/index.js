@@ -115,7 +115,7 @@ const UpdateStudent = () => {
                     <input
                       type="text"
                       className="form-control inputM"
-                      value={studentData.email}
+                      value={studentData.account.email}
                       onChange={handleChange}
                       name="email"
                     />
@@ -163,6 +163,102 @@ const UpdateStudent = () => {
             </div>
           </div>
         );
+
+
+
+         case 3:
+        return (
+           <div>
+            <div className="mt-5">
+              <div className="row justify-content-center">
+                <div className="col-md-8 col-lg-6 detail">
+                  <div className="mb-3">
+                    <label className="form-label labelM">StudentId</label>
+                    <input
+                      type="text"
+                      className="form-control inputM"
+                      value={studentData.account.username}
+               
+                      name="studentId"
+                    />
+                  </div>
+                
+
+
+                   <div className="mb-3">
+                    <label className="form-label labelM">Department</label>
+                    <input
+                      type="text"
+                      className="form-control inputM"
+                      value={studentData.department.name}
+               
+                      name="email"
+                    />
+                  </div>
+
+                  <div className="mb-3">
+                    <label className="form-label labelM">Block</label>
+                    <input
+                      type="text"
+                      className="form-control inputM"
+                      value={studentData.block.name+"-0"+studentData.block.blockNo}
+ 
+                      name="blockNo"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+
+        case 4:
+        return (
+           <div>
+            <div className="mt-5">
+              <div className="row justify-content-center">
+                <div className="col-md-8 col-lg-6 detail">
+                  <div className="mb-3">
+                    <label className="form-label labelM">Year</label>
+                    <input
+                      type="text"
+                      className="form-control inputM"
+                      value={studentData.year}
+               
+                      name="year"
+                    />
+                  </div>
+                
+
+
+                   <div className="mb-3">
+                    <label className="form-label labelM">Semister</label>
+                    <input
+                      type="text"
+                      className="form-control inputM"
+                      value={studentData.semister}
+               
+                      name="semister"
+                    />
+                  </div>
+
+                  <div className="mb-3">
+                    <label className="form-label labelM">Room Number</label>
+                    <input
+                      type="number"
+                      className="form-control inputM"
+                      value={studentData.roomNo}
+                      name="roomNo"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+
         }
         }
 

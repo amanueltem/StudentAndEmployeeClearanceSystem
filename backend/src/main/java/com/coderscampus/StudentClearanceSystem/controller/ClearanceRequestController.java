@@ -4,13 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.coderscampus.StudentClearanceSystem.domain.Account;
+import com.coderscampus.StudentClearanceSystem.domain.*;
 import com.coderscampus.StudentClearanceSystem.enums.AuthorityEnum;
 import com.coderscampus.StudentClearanceSystem.service.ClearanceRequestService;
 import com.coderscampus.StudentClearanceSystem.util.AuthorityUtil;
@@ -37,8 +33,27 @@ public class ClearanceRequestController {
     }
     @GetMapping("self")
     public ResponseEntity<?> searchRequest(@AuthenticationPrincipal Account account){
-        return ResponseEntity.ok(requestService.searchClearanceRequest(account));
+        if(AuthorityUtil.hasRole(AuthorityEnum.ROLE_STUDENT.name(),account)){
+            return ResponseEntity.ok(requestService.searchClearanceRequest(account));
+        }
+    
+          else{
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+       }
     }
+
+
+    @GetMapping("/{id}")
+public ResponseEntity<ClearanceRequest> getClearanceRequest(@AuthenticationPrincipal Account account,
+                                          @PathVariable Long id) {
+    if (AuthorityUtil.hasRole(AuthorityEnum.ROLE_STUDENT.name(), account)) {
+        // Call the service to retrieve the student
+        ClearanceRequest request = requestService.getClearanceRequest(id);
+        return ResponseEntity.ok(request);
+    } else {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    }
+}
 
     
    

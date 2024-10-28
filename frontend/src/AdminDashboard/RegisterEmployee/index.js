@@ -225,7 +225,7 @@ const RegisterEmployee = () => {
           ajax('/api/proctors','POST',user.jwt,formData).
           then((data)=>{
              setIsLoading(false);
-          if(data==='conflict') toast.error('Email already taken!');
+          if(data==='conflict') toast.error('there is user!');
           else toast.success('Proctor sucessfuly registered!')
           }
           );

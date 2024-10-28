@@ -6,9 +6,11 @@ import {useUser} from '../..//UserProvider/index'
 import {useEffect,useState} from 'react'
 import Header from "../header/Header";
 import "../../styles/Registration.css";
-
+import Loader from "../../components/Loader";
+import { toast } from "react-toastify";
 const ApplyClearance=()=>{
 const user=useUser();
+ const [isLoading, setIsLoading] = useState(false);
 const [reasons,setReasons]=useState([]);
 const [reasonName,setReasonName]=useState("select reason");
 const[studentData,setStudentData]=useState(null);
@@ -31,7 +33,7 @@ useEffect(()=>{
     }
     else{
       
-      const updatedReasons = reasons.filter(reason => reason.reasonName !== "End of Acadamic Year");
+      const updatedReasons = reasons.filter(reason => reason.reasonName !== "End of Acadamy");
       console.log(updatedReasons);
       setReasons(updatedReasons);
     }
@@ -44,18 +46,22 @@ useEffect(()=>{
 
 
 const handleApply=(e)=>{
+  setIsLoading(true);
 if(reasonName==='Select Reason'){
-alert('Please select your reason!');
+toast.error('Please select your reason!');
+setIsLoading(false)
 }
 
 else{
  ajax('/api/requests','POST',user.jwt,reasonName).
  then((data)=>{
  if(data==='conflict'){
- alert('you already requested clearance before!');
+ toast.error('you already requested clearance before!');
+ setIsLoading(false);
  }
  else{
-   alert('you have successfuly submitted your request');
+   toast.success('you have successfuly submitted your request');
+   setIsLoading(false);
  }
  }
  )
@@ -65,6 +71,7 @@ else{
   return(
   <div>
         <Header/>
+         {isLoading && <Loader />}
           <div className="apply">
           
                <label>Reason</label>

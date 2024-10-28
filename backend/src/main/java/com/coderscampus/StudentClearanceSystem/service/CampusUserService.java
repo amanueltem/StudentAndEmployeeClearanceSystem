@@ -16,7 +16,7 @@ import com.coderscampus.StudentClearanceSystem.util.*;
 import com.coderscampus.StudentClearanceSystem.dto.StaffDto;
 import com.coderscampus.StudentClearanceSystem.enums.AuthorityEnum;
 import com.coderscampus.StudentClearanceSystem.repository.*;
-
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CampusUserService {
@@ -28,8 +28,19 @@ public class CampusUserService {
     private AuthorityService authService;
     @Autowired
     private AccountRepository accountRepo;
+      @Autowired
+    private PasswordResetTokenRepository presetRepo;
     public CampusUser saveUser(StaffDto staff){
         CampusUser newUser=new CampusUser();
+
+
+
+           List<CampusUser> users = campusUserRepo.findByPosition(staff.getRoleName());
+              for (CampusUser user : users) {
+            if (user.getCampus().getId().equals(staff.getCampus().getId())) {
+                throw new IllegalStateException("Someone is registered in this position at the specified campus.");
+            }
+        }
         newUser.setFname(staff.getFname());
         newUser.setMname(staff.getMname());
         newUser.setLname(staff.getLname());
@@ -46,15 +57,10 @@ public class CampusUserService {
 
 
           String staffId;
-        Account userInDB;
-        while(true){
-            staffId=IDGenerator.generateID("staff");
-           userInDB=accountRepo.findByUsername(staffId).orElse(null);
-           if(userInDB!=null){
+       
+            staffId=IDGenerator.generateID("campus");
             newAccount.setUsername(staffId);
-            break;
-            }
-        }
+            newAccount.setEmail(staff.getEmail());
         
         PasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
         String password=passwordEncoder.encode(newUser.getFname());
@@ -82,4 +88,18 @@ public class CampusUserService {
       public List<CampusUser> getCampusPolice(){
         return campusUserRepo.findByPosition(AuthorityEnum.ROLE_CAMPUS_POLICE.name());
       }
+
+
+         @Transactional
+    public CampusUser deleteStaff(Long id) {
+        CampusUser staff = campusUserRepo.findById(id).orElse(null);
+        if (staff != null) {
+            campusUserRepo.deleteById(id);
+            PasswordResetToken ps = presetRepo.findByAccount(staff.getAccount()).orElse(null);
+            if (ps != null) {
+                presetRepo.deleteById(ps.getId());
+            }
+        }
+        return staff;
+    }
 }

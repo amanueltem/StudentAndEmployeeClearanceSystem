@@ -23,6 +23,7 @@ import com.coderscampus.StudentClearanceSystem.repository.ClearanceRequestReposi
 import com.coderscampus.StudentClearanceSystem.repository.ClearanceResponseRepository;
 import com.coderscampus.StudentClearanceSystem.repository.StudentRepository;
 
+import org.springframework.transaction.annotation.Transactional;
 @Service
 public class ClearanceRequestService {
     @Autowired
@@ -39,6 +40,7 @@ public class ClearanceRequestService {
     private CampusUserService campusUserService;
     @Autowired
     private ProctorService proctorService;
+      @Transactional
     public ClearanceResponse saveClearanceRequest(Account account, String reason) {
         ClearanceRequest request = new ClearanceRequest();
         request.setRequestedDate(LocalDate.now());
@@ -46,18 +48,22 @@ public class ClearanceRequestService {
         Optional<Student> optionalStudent = studentRepo.findByAccount(account);
         Student student = optionalStudent.orElse(new Student());
         List<ClearanceRequest> requests =requestRepo.findByRequestedBy(student);
-        if(requests.size()>0){
+        for(ClearanceRequest requestI:requests){
+            if(requestI.getStatus().equals("Pending")|| requestI.getRequestedReason().equals("End of Acadamy")
+                || requestI.getRequestedReason().equals("Transfer"))
             throw new IllegalStateException("Already requested.");
         }
         //intialize Responses
 
         request.setRequestedBy(student);
         
+        request.setStatus("Pending");
        
         ClearanceRequest savedClearance=requestRepo.save(request);
           //intialize Response Department Head
         List<DepartmentUser> departmentHead=deptService.getDeptHeads();
         ClearanceResponse clResponse=new ClearanceResponse();
+
         clResponse.setClearanceRequest(savedClearance);
         clResponse.setResponsedBy(filterDepartmentHead(student.getDepartment(), 
         departmentHead));
@@ -158,5 +164,7 @@ public class ClearanceRequestService {
     return requestRepo.findByRequestedBy(student);
    } 
    
-
+public ClearanceRequest getClearanceRequest(Long id){
+    return requestRepo.findById(id).orElse(null);
+}
 }
