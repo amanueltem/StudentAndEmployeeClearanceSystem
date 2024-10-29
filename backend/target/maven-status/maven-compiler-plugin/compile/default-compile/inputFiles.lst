@@ -24,6 +24,7 @@
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/domain/User.java
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/enums/AssignmentStatusEnum.java
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/filter/JwtFilter.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/util/NetworkUtils.java
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/controller/ClearanceRequestController.java
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/enums/AssignmentEnum.java
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/util/IDGenerator.java
@@ -41,6 +42,7 @@
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/domain/Department.java
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/ClearanceResponseRepository.java
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/AuthorityRepository.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/config/AppConfig.java
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/dto/StaffDto.java
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/service/CampusService.java
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/domain/Authority.java

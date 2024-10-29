@@ -65,8 +65,8 @@ const handleUpdate=()=>{
                                     <Card.Text Sstyle={{ marginTop: "1em" }}  className={`${styles.card_text}`}>
                                         <p><b>Name</b>: {data.fname
                                         +" "+data.mname}</p>
-                                        <p><b>email</b>: {data.email}</p>
-                                        <p><b>ID</b>: {data.id}</p>
+                                        <p><b>email</b>: {data.account.email}</p>
+                                        <p><b>ID</b>: {data.account.studentId}</p>
                                        <p><b>Year</b>:{data.year}</p>
                                        <p><b>Semister</b>:{data.semister}</p>
                                     </Card.Text>

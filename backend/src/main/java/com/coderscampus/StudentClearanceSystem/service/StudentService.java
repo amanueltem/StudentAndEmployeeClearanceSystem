@@ -43,6 +43,9 @@ public class StudentService {
     private StudentTempoRepository studentTempoRepo;
        @Autowired
     private EmailService emailService;
+       @Autowired
+    private String baseUrl;
+
     @Transactional
     public Student saveStudent(StudentTempo studentTempo){
 
@@ -67,11 +70,11 @@ public class StudentService {
             newAccount.setUsername(studentTempo.getStudentId());
           
      
-        String password = passwordEncoder.getPasswordEncoder().encode(newStudent.getFname());
+        String password = passwordEncoder.getPasswordEncoder().encode(newStudent.getFname().trim());
         newAccount.setPassword(password);
         newAccount.setCreatedDate(LocalDate.now());
         newAccount.setIsDefault(true);
-        newAccount.setEmail(studentTempo.getEmail());
+        newAccount.setEmail(studentTempo.getEmail().trim().toLowerCase());
         Account savedAccount = accountService.saveAccount(newAccount);
         Authority authority = new Authority();
         authority.setAuthority(AuthorityEnum.ROLE_STUDENT.name());
@@ -81,10 +84,10 @@ public class StudentService {
 
         newStudent.setAccount(savedAccount);
         studentTempoRepo.delete(studentTempo);
-           String resetUrl = "http://10.10.42.244:3000";
+          
 
         emailService.sendEmail(studentTempo.getEmail(), "Registration approved", 
-            "your username is="+savedAccount.getUsername()+" and your default password is="+studentTempo.getFname()+".\n\n" + resetUrl);
+            "your username is="+savedAccount.getUsername()+" and your default password is="+studentTempo.getFname()+".\n\n" + baseUrl);
         return studentRepo.save(newStudent);
     }
     public List<Student> getStudentsByCollege(Account account){

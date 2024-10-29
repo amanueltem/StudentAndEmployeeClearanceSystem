@@ -20,8 +20,10 @@ com/coderscampus/StudentClearanceSystem/repository/AuthorityRepository.class
 com/coderscampus/StudentClearanceSystem/controller/ProctorController.class
 com/coderscampus/StudentClearanceSystem/enums/ReasonEnum.class
 com/coderscampus/StudentClearanceSystem/util/JwtUtil.class
+com/coderscampus/StudentClearanceSystem/util/NetworkUtils.class
 com/coderscampus/StudentClearanceSystem/controller/ClearanceRequestController.class
 com/coderscampus/StudentClearanceSystem/service/AccountService.class
+com/coderscampus/StudentClearanceSystem/config/AppConfig.class
 com/coderscampus/StudentClearanceSystem/repository/StudentRepository.class
 com/coderscampus/StudentClearanceSystem/repository/ClearanceResponseRepository.class
 com/coderscampus/StudentClearanceSystem/service/ClearanceResponseService.class

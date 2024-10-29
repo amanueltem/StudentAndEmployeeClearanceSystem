@@ -184,7 +184,7 @@ const requestId = window.location.href.split("/print/")[1];
                 <>
                     <ResponseDetails />
                     <div className="qrCodeContainer" ref={qrCodeRef}>
-                        <QRCodeCanvas value={decoded_jwt.sub} />
+                        <QRCodeCanvas value={decoded_jwt.sub+"\n clearance ID:"+clearanceRequest.id} />
                     </div>
                     <div className="print-buttons" style={{ textAlign: 'center' }}>
                         <Button

@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import ajax from '../../services/fetchService';
 import StatusBadge from "../../StatusBadge/index";
 import Loader from "../../components/Loader";
+import "../../styles/Requests.css"
 const Requests = () => {
   const user = useUser();
   const navigate = useNavigate();
@@ -36,10 +37,10 @@ const Requests = () => {
 
   const RequesterFormatter = ({ col1, col2 }) => (
     <Row>
-      <Col>
+      <Col xs={3}>
         <label>{col1}</label>
       </Col>
-      <Col>
+      <Col xs={3}>
         <label>{col2}</label>
       </Col>
     </Row>
