@@ -9,7 +9,7 @@ import "../../styles/Registration.css";
 import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
  
-const RegisterEmployee = () => {
+const RegisterStaff = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(1);
   const [colleges,setColleges]=useState([]);
@@ -128,14 +128,7 @@ const RegisterEmployee = () => {
     const copyEnums=[];
     enums.map((eachEnum)=>{
       if(eachEnum.roleValue!=="Student" && eachEnum.roleValue!=="Admin" && eachEnum.roleValue!=="Employee"
-      && eachEnum.roleValue!=="HR"
-      &&eachEnum.roleValue!=="ROLE_HR_ADMIN"
-      &&eachEnum.roleValue!=="ROLE_IMMEDIATE_SUPERVISOR"
-      &&eachEnum.roleValue!=="ROLE_GENERAL_STORE"
-      &&eachEnum.roleValue!=="ROLE_RESIDENCE"
-      &&eachEnum.roleValue!=="ROLE_SPORTS_MASTER"
-      &&eachEnum.roleValue!=="ROLE_MU_SAVING_AND_CREDIT"
-      &&eachEnum.roleValue!=="ROLE_FINANCE"){
+      && eachEnum.roleValue!=="HR"){
         copyEnums.push(eachEnum);
       }
     });
@@ -709,5 +702,5 @@ return (
 
 };
 
-export default RegisterEmployee;
+export default RegisterStaff;
 

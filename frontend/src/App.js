@@ -32,6 +32,31 @@ import ViewStudents from './AdminDashboard/ViewStudent/index'
 
 import Register from './StudentDashboard/RegisterStudent/index'
 import RequestView from './StaffDashboard/Requests/RequestView'
+
+
+
+import HRAdminDashboard from "./HRAdminDashboard/index";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import {useEffect,useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import Login from "./auth/index";
@@ -119,9 +144,18 @@ const App = () => {
            </PrivateRoute>
            ):
            (
+           roles.find((role)=>role==="ROLE_HR_ADMIN")?
+           (
+           <PrivateRoute>
+           <HRAdminDashboard/>
+           </PrivateRoute>
+           )
+           :
+           (
            <PrivateRoute>
            <StaffDashboard/>
            </PrivateRoute>
+           )
            )
           )
           )
