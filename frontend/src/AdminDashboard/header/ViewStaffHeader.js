@@ -7,7 +7,7 @@ import muLogo from "../../images/mekelle.png";
 import { useUser } from "../../UserProvider/index";
 import {jwtDecode} from "jwt-decode";
 
-
+// the updated viewStaffHeadr
 const ViewStaffHeader = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [showCollegeStaff, setShowCollegeStaff] = useState(false);
