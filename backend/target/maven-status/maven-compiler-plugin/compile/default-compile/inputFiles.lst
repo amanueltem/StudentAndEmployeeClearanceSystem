@@ -28,7 +28,6 @@
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/controller/ClearanceRequestController.java
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/enums/AssignmentEnum.java
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/util/IDGenerator.java
-/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/enums/HRAuthorityEnum.java
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/domain/ClearanceRequest.java
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/controller/StudentController.java
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/controller/ProctorController.java

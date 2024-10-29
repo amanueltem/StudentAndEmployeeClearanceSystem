@@ -32,7 +32,6 @@ com/coderscampus/StudentClearanceSystem/domain/Account.class
 com/coderscampus/StudentClearanceSystem/repository/DepartmentUserRepository.class
 com/coderscampus/StudentClearanceSystem/controller/BlockController.class
 com/coderscampus/StudentClearanceSystem/domain/Authority.class
-com/coderscampus/StudentClearanceSystem/enums/HRAuthorityEnum.class
 com/coderscampus/StudentClearanceSystem/repository/CampusUserRepository.class
 com/coderscampus/StudentClearanceSystem/repository/AccountRepository.class
 com/coderscampus/StudentClearanceSystem/controller/StudentController.class

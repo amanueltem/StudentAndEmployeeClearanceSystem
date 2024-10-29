@@ -9,6 +9,8 @@ import styles from "./auth.module.scss";
 import Card from "../components/Card";
 import { toast } from "react-toastify";
 import Loader from "../components/Loader";
+import { FaUser} from "react-icons/fa";
+
 
 const Login = () => {
   const user = useUser();
@@ -67,13 +69,16 @@ const Login = () => {
             <h2>Login</h2>
 
             <form>
-              <input
-                type="text"
-                placeholder="User Name"
-                required
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
+            <div className="input-container">
+      <input
+        type="text"
+        placeholder="User Name"
+        required
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      {/* <FaUser className="user-icon" /> */}
+    </div>
               <div style={{ position: 'relative' }}>
                 <input
                   type={showPassword ? "text" : "password"} // Toggle input type
@@ -98,13 +103,22 @@ const Login = () => {
                   {showPassword ? <FaEye /> : <FaEyeSlash />} {/* Show/Hide icon */}
                 </button>
               </div>
-              <button
-                type="button"
-                className="--btn --btn-primary --btn-block"
-                onClick={sendLoginRequest}
-              >
-                Login
-              </button>
+     <button 
+        type="button"
+        className="btn"
+        onClick={sendLoginRequest}
+        style={{
+            backgroundColor: '#007bff',
+            color: '#fff',
+            borderRadius: '15px',
+            border: 'none',
+            padding: '6px 20px',
+            cursor: 'pointer',
+    
+        }}
+    >
+        Login
+    </button>
               <div className={styles.links}>
                 <Link to="/forgot_password" style={{ margin: '10px 0', fontSize: '2rem', display: 'flex', alignItems: 'center' }}>
                   <FaKey style={{ marginRight: '8px' }} />

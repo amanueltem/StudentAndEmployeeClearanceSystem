@@ -55,6 +55,7 @@ const navigate=useNavigate();
   return (
     <div>
          <ViewStaffHeader/>
+         <div className={`${styles.core_body}`}>
           <h1 style={{"marginLeft":"3rem","margin":"5%"}}>List of Department Heads</h1>
            {datas ? (
                 <div  className={`d-grid gap-5 ${styles.cards}`}
@@ -87,6 +88,7 @@ const navigate=useNavigate();
                             </Card>
                         ))}
                 </div>) : <></>}
+                </div>
   
     </div>
   );

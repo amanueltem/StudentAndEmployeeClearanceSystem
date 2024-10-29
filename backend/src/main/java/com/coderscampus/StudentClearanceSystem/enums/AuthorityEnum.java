@@ -14,7 +14,6 @@ public enum AuthorityEnum {
     ROLE_CAMPUS_POLICE("ROLE_CAMPUS_POLICE","Campus Police"),
     ROLE_HR("ROLE_HR","HR"),
     ROLE_ADMIN("ROLE_ADMIN","Admin"),
-    ROLE_HR_ADMIN("ROLE_HR_ADMIN","HR Admin"),
     ROLE_PROCTOR("ROLE_PROCTOR","Proctor"),
     ROLE_IMMEDIATE_SUPERVISOR("ROLE_IMMEDIATE_SUPERVISOR","Immediate Supervisor"),
     ROLE_GENERAL_STORE("ROLE_GENERAL_STORE","General Store"),

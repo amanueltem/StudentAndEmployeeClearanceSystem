@@ -6,7 +6,7 @@ const ViewStaff = () => {
   return (
     <div>
           <ViewStaffHeader/>
-          <h1 style={{"paddingLeft":"30%","paddingTop":"5%","fontSize":"4rem"}}>Wellcome to staff management.</h1>
+          <h1 style={{"paddingLeft":"30%","paddingTop":"5%","marginTop":"5rem","fontSize":"4rem"}}>Wellcome to staff management.</h1>
        
     </div>
   );

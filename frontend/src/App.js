@@ -35,27 +35,6 @@ import RequestView from './StaffDashboard/Requests/RequestView'
 
 
 
-import HRAdminDashboard from "./HRAdminDashboard/index";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 import {useEffect,useState } from "react";
 import { jwtDecode } from "jwt-decode";
@@ -143,19 +122,11 @@ const App = () => {
            <AdminDashboard/>
            </PrivateRoute>
            ):
-           (
-           roles.find((role)=>role==="ROLE_HR_ADMIN")?
-           (
-           <PrivateRoute>
-           <HRAdminDashboard/>
-           </PrivateRoute>
-           )
-           :
+         
            (
            <PrivateRoute>
            <StaffDashboard/>
            </PrivateRoute>
-           )
            )
           )
           )
