@@ -2,12 +2,13 @@
 import {Row,Col,Button} from 'react-bootstrap'
 import "../../styles/Registration.css";
 import ajax from '../../services/fetchService'
-import {useState,useEffect} from 'react'
+import {useState,useEffect,useRef} from 'react'
 import {useUser} from '../../UserProvider/index'
 import {Link} from 'react-router-dom'
 import Header from "../header/Header";
 import {useNavigate} from 'react-router-dom'
 import Loader from "../../components/Loader";
+
 const ViewStatus=()=>{
  const user=useUser();
  const [clearanceRequest,setClearanceRequest]=useState('');
@@ -16,6 +17,8 @@ const ViewStatus=()=>{
  const requestId = window.location.href.split("/view_request/")[1];
  const navigate=useNavigate();
    const [isLoading, setIsLoading] = useState(false);
+ const responseDetailsRef = useRef();  // Reference for the ResponseDetails component
+
 
   useEffect(()=>{
     setIsLoading(true);
@@ -111,7 +114,7 @@ const ViewStatus=()=>{
 
     if (responses.length > 0) {
         return (
-            <div className="detail">
+         <div className="detail" ref={responseDetailsRef}>
                 <Row style={{ backgroundColor: '#ccccff' }}>
                     <Col>
                         <label className="fullName">No</label>
@@ -153,6 +156,23 @@ const ViewStatus=()=>{
     }
 };
 
+
+
+
+
+
+
+
+// This useEffect checks if responseDetailsRef is loaded
+useEffect(() => {
+    if (responseDetailsRef.current) {
+        console.log("Response details component is ready for printing.");
+    } else {
+        console.warn("Response details ref is not yet assigned.");
+    }
+}, [responseDetailsRef.current]);
+
+
    return (
  <div className="justify-content-center">
         <Header/>
@@ -165,11 +185,23 @@ const ViewStatus=()=>{
         variant="secondary"
         onClick={
         (e)=>{
-         navigate('/view_request');
+         navigate(-1);
         }
         }>
         Back
         </Button>
+
+          {
+            clearanceRequest.status==='accepted'&&(
+           <Button size="lg" variant="success"  style={{ marginLeft: '10px' }}
+           onClick={(e)=>{
+               navigate(`/print/${requestId}`)
+           }}
+           >
+                        Download
+                    </Button>
+                    )
+                }
         </>
           ):
           (

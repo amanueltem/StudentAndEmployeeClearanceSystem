@@ -13,6 +13,7 @@ import ResponseDetail from './StudentDashboard/ViewStatus/ResponseDetail'
 import StudentRequests from './StudentDashboard/ViewStatus/Requests'
 import ApplyClearance from './StudentDashboard/ApplyClearance/index'
 import ViewStatus from './StudentDashboard/ViewStatus/index'
+import Print from  "./StudentDashboard/ViewStatus/print"
 
 import AdminDashboard from './AdminDashboard/index'
 import StaffDashboard from './StaffDashboard/index'
@@ -47,7 +48,7 @@ import "./HomePage.css";
 import LongForm from './RegistrarDashboard/LongForm'
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import Test from "./Test"; // Make sure this path is correct
 
 const App = () => {  
       const user=useUser();
@@ -68,6 +69,7 @@ const App = () => {
          
           <Route path="/" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
+          <Route path="/test" element={<Test/>}/>
          <Route
     path="/register_student"
     element={
@@ -278,6 +280,20 @@ const App = () => {
           (
           <PrivateRoute>
           <Library/>
+          </PrivateRoute>
+          ):
+          (<PrivateRoute>
+          </PrivateRoute>
+          )
+          }
+          />
+
+
+           <Route path="/print/:id" element={
+          roles.find((role)=>role==="ROLE_STUDENT")?
+          (
+          <PrivateRoute>
+          <Print/>
           </PrivateRoute>
           ):
           (<PrivateRoute>

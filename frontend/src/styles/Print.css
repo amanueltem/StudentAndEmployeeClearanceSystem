@@ -1,0 +1,39 @@
+.detail {
+    text-align: center; /* Center-aligns text within the detail section */
+}
+
+.detail table {
+    width: auto; /* Table will stretch to fit content */
+    margin: 0 auto; /* Centers the table horizontally */
+    border-collapse: collapse; /* Prevents spacing between cells */
+}
+
+.detail th, .detail td {
+    padding: 8px; /* Padding for table cells */
+    text-align: left; /* Aligns text to the left */
+    border: 1px solid #ddd; /* Light grey border */
+}
+
+.detail th {
+    font-size: 2rem; /* Increases the font size for header */
+}
+
+.qrCodeContainer, .qrCodeRef {
+    display: flex;
+    justify-content: center; /* Centers QR code containers */
+    margin: 20px 0; /* Margin above and below */
+}
+
+.print-buttons {
+    display: flex;
+    justify-content: center; /* Centers the button container */
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px; /* Space above button container */
+    margin-bottom: 80px; /* Space below button container */
+    padding-bottom: 40px; /* Additional padding for visibility */
+}
+
+.print-container {
+    padding-bottom: 80px; /* Extra bottom padding for the entire container */
+    overflow-y: auto; /* Allows scrolling if height is limited */
+}
