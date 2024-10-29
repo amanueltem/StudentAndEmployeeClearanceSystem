@@ -80,7 +80,7 @@ const ViewStaffHeader = () => {
               </div>
               {showCampusStaff && (
                 <ul className={styles.subMenu}>
-                  <li><NavLink to="/view_staff/cafeterias" className={styles.navLink}>Cafeterias</NavLink></li>
+                  <li><NavLink to="/view_staff/cefeterias" className={styles.navLink}>Cafeterias</NavLink></li>
                   <li><NavLink to="/view_staff/proctors" className={styles.navLink}>Proctors</NavLink></li>
                   <li><NavLink to="/view_staff/campus_polices" className={styles.navLink}>Campus Police</NavLink></li>
                 </ul>

@@ -6,7 +6,7 @@ import {useUser} from "../../../UserProvider/index"
 import {useEffect,useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import ViewStaffHeader from "../../header/ViewStaffHeader";
-import styles from "../../../styles/Card.module.scss";
+import styles from "../../../styles/Card2.module.scss";
 import Swal from 'sweetalert2';
 import { toast } from "react-toastify";
 const DepartmentHead = () => {
@@ -55,10 +55,10 @@ const navigate=useNavigate();
   return (
     <div>
          <ViewStaffHeader/>
-          <h1 style={{"marginLeft":"3rem","margin":"5%"}}>List of Department Heads</h1>
+         <h1 className={styles.registrarTitle}>List of Department Heads</h1>
            {datas ? (
                 <div  className={`d-grid gap-5 ${styles.cards}`}
-                    style={{ gridTemplateColumns: "repeat(auto-fit,34rem)" }}>{
+                    style={{ gridTemplateColumns: "repeat(auto-fit,30rem)" }}>{
                         datas.map((data) => (
                             <Card key={data.id} style={{ width: "30rem", height: "30rem" }} className={`${styles.card}`}>
                                 <Card.Body className="d-flex flex-column justify-content-around">

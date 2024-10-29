@@ -1,17 +1,18 @@
 import Navigation from '../profile/AdminNavigation';
+import MUU from "../images/MU1.png";
+import styles from "../styles/index.module.scss";
+import Header from './header/Header';
 
-import Header from './header/Header'
 
 const AdminDashboard = () => {
   return (
-    <div>
-     <Header/>
-     <h1 style={{paddingLeft:"40%",paddingTop:"5%",fontSize:"4rem"}}>
-     Admin Dashboard
-     </h1>
+    <div className={styles.dashboardContainer}>
+      <Header />
+      <div className={styles.contentOverlay}>
+        <h1>Admin Dashboard</h1>
+      </div>
     </div>
   );
 };
 
 export default AdminDashboard;
-
