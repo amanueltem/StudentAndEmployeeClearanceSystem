@@ -1,6 +1,7 @@
 
 import {Row,Col,Button} from 'react-bootstrap'
 import "../../styles/Registration.css";
+import "../../styles/table.css";
 import ajax from '../../services/fetchService'
 import {useState,useEffect,useRef} from 'react'
 import {useUser} from '../../UserProvider/index'
@@ -174,7 +175,7 @@ useEffect(() => {
 
 
    return (
- <div className="justify-content-center">
+ <div className="justify-content-center main_table" style={{"marginTop":"8%"}}>
         <Header/>
          {isLoading && <Loader />}
         {

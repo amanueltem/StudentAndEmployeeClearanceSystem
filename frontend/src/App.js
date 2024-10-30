@@ -25,6 +25,7 @@ import DepartmentHead from './AdminDashboard/ViewStaff/DepartmentHead/index'
 import Library from './AdminDashboard/ViewStaff/CollegeView/Library'
 import CollegeDean from './AdminDashboard/ViewStaff/CollegeView/CollegeDean'
 import Registrar from './AdminDashboard/ViewStaff/CollegeView/Registrar'
+import HRRegistrar from './AdminDashboard/ViewStaff/CollegeView/HRRegistrar'
 import Cafeteria from './AdminDashboard/ViewStaff/CampusView/Cafeteria'
 import Proctor from './AdminDashboard/ViewStaff/CampusView/Proctor'
 import CampusPolice from './AdminDashboard/ViewStaff/CampusView/CampusPolice'
@@ -35,6 +36,8 @@ import RequestView from './StaffDashboard/Requests/RequestView'
 
 
 
+import HRDashboard from "./HRRegistrar/index"
+import RegisterEmp from "./HRRegistrar/RegisterEmployee/index"
 
 import {useEffect,useState } from "react";
 import { jwtDecode } from "jwt-decode";
@@ -122,11 +125,18 @@ const App = () => {
            <AdminDashboard/>
            </PrivateRoute>
            ):
-         
+           (
+           roles.find((role)=>role==="ROLE_HR")?
+           (
+           <PrivateRoute>
+           <HRDashboard/>
+           </PrivateRoute>
+           ):
            (
            <PrivateRoute>
            <StaffDashboard/>
            </PrivateRoute>
+           )
            )
           )
           )
@@ -162,6 +172,17 @@ const App = () => {
           </PrivateRoute>)
           } />
           
+          <Route path="/register_employee" element={
+            roles.find((role)=>role==="ROLE_HR")?
+          (
+            <PrivateRoute>
+            <RegisterEmp/>
+            </PrivateRoute>):
+            (
+            <PrivateRoute>
+            </PrivateRoute>
+            )
+          }/>
      
             
           <Route path="/view_request" element={
@@ -285,6 +306,19 @@ const App = () => {
           (
           <PrivateRoute>
           <Library/>
+          </PrivateRoute>
+          ):
+          (<PrivateRoute>
+          </PrivateRoute>
+          )
+          }
+          />
+
+            <Route path="/view_staff/hrs" element={
+          roles.find((role)=>role==="ROLE_ADMIN")?
+          (
+          <PrivateRoute>
+          <HRRegistrar/>
           </PrivateRoute>
           ):
           (<PrivateRoute>

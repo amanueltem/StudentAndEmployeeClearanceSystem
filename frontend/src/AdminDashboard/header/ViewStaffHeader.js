@@ -6,6 +6,7 @@ import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import muLogo from "../../images/mekelle.png";
 import { useUser } from "../../UserProvider/index";
 import {jwtDecode} from "jwt-decode";
+import { FaHome} from "react-icons/fa"
 
 // the updated viewStaffHeadr
 const ViewStaffHeader = () => {
@@ -60,7 +61,10 @@ const ViewStaffHeader = () => {
         <nav>
           <ul className={styles.ul}>
             <li>
-              <NavLink to="/dashboard" className={styles.homeLink}>Back To Home</NavLink>
+           <NavLink to="/dashboard" className={styles.homeLink}>
+    <FaHome style={{ fontSize: '3rem', color: 'inherit' }} />
+</NavLink>
+>
             </li>
             <li>
               <div onClick={() => setShowCollegeStaff(!showCollegeStaff)} className={styles.navLink}>
@@ -71,6 +75,7 @@ const ViewStaffHeader = () => {
                   <li><NavLink to="/view_staff/librarians"className={styles.navLink}>Librarians</NavLink></li>
                   <li><NavLink to="/view_staff/college_deans" className={styles.navLink} >College Deans</NavLink></li>
                   <li><NavLink to="/view_staff/registrars" className={styles.navLink}>Registrars</NavLink></li>
+                  <li><NavLink to="/view_staff/hrs" className={styles.navLink}>HR Registrars</NavLink></li>
                 </ul>
               )}
             </li>

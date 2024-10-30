@@ -8,7 +8,7 @@ import Header from '../header/Header';
 import "../../styles/Registration.css";
 import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
- 
+ import "../../styles/main.css"
 const RegisterEmployee = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(1);
@@ -127,15 +127,7 @@ const RegisterEmployee = () => {
   {
     const copyEnums=[];
     enums.map((eachEnum)=>{
-      if(eachEnum.roleValue!=="Student" && eachEnum.roleValue!=="Admin" && eachEnum.roleValue!=="Employee"
-      && eachEnum.roleValue!=="HR"
-      &&eachEnum.roleValue!=="ROLE_HR_ADMIN"
-      &&eachEnum.roleValue!=="ROLE_IMMEDIATE_SUPERVISOR"
-      &&eachEnum.roleValue!=="ROLE_GENERAL_STORE"
-      &&eachEnum.roleValue!=="ROLE_RESIDENCE"
-      &&eachEnum.roleValue!=="ROLE_SPORTS_MASTER"
-      &&eachEnum.roleValue!=="ROLE_MU_SAVING_AND_CREDIT"
-      &&eachEnum.roleValue!=="ROLE_FINANCE"){
+      if(eachEnum.roleValue!=="Student" && eachEnum.roleValue!=="Admin" && eachEnum.roleValue!=="Employee"){
         copyEnums.push(eachEnum);
       }
     });
@@ -184,7 +176,9 @@ const RegisterEmployee = () => {
     !=''&&formData.lname!='' &&
     formData.email!='',formData.gender!=''&&formData.phoneNumber!='' && campusName!=='Select Campus'){
      if((roleValue==='Library Circulation' || roleValue==='Registrar' ||
-        roleValue==='Department Head' || roleValue==='College Dean') && collegeName==='Select College'){
+        roleValue==='Department Head' || roleValue==='College Dean'
+        || roleValue==='Immediate Supervisor'
+        ||roleValue==='HR') && collegeName==='Select College'){
           toast.error("Please Select College");
         }
      else if(roleValue==='Proctor' && blockName==='Select Block'){
@@ -207,7 +201,8 @@ const RegisterEmployee = () => {
          });
          
          }
-         else if (roleValue==='Library Circulation' || roleValue==='Registrar' || roleValue==='College Dean'){
+         else if (roleValue==='Library Circulation' || roleValue==='Registrar' || roleValue==='College Dean'
+          ||'HR' || 'Immediate Supervisor'){
             ajax('/api/college_users','POST',user.jwt,formData).
             then((data)=>{
               setIsLoading(false)
@@ -470,39 +465,40 @@ const RegisterEmployee = () => {
                      }
                      </DropdownButton>
                   </div>
-                  {
-                  roleValue==="Student Cafeteria" || roleValue==="Campus Police"?
-                  (
-                  <>
-                  </>
-                  ):
-                  (
-                 <div className="mb-3">
-                    <label>Campus</label>
-                    
-                    <DropdownButton 
-                     variant="info"
-                     
-                    title={campusName}
-                    onSelect={
-                     (selectedElement)=>{
-                     setCampusName(selectedElement)
-                     }
-                    }>
-                     {
-                      campuses.map((campus)=>(
-                       <Dropdown.Item key={campus.id}
-                       eventKey={campus.name}
-                       >
-                       {campus.name}
-                       </Dropdown.Item>
-                      )
-                      )
-                     }
-                     </DropdownButton>
-                  </div>
-                  )
-                  }
+               {
+  (roleValue === "Student Cafeteria" || 
+   roleValue === "Campus Police" || 
+   roleValue === "General Store" || 
+   roleValue === "Residence" || 
+   roleValue === "Sports Master" || 
+   roleValue === "Mu saving and credit" || // Changed to a comparison
+   roleValue === "Finance" || 
+   roleValue === "Computer Center") ?
+  (
+    <>
+     
+    </>
+  ) : 
+  (
+    <div className="mb-3">
+      <label>Campus</label>
+      <DropdownButton 
+        variant="info"
+        title={campusName}
+        onSelect={(selectedElement) => {
+          setCampusName(selectedElement);
+        }}>
+        {campuses.map((campus) => (
+          <Dropdown.Item key={campus.id} eventKey={campus.name}>
+            {campus.name}
+          </Dropdown.Item>
+        ))}
+      </DropdownButton>
+    </div>
+  )
+}
+
+
                   
                 </div>
               </div>
@@ -518,8 +514,10 @@ const RegisterEmployee = () => {
               <div className="row justify-content-center">
                 <div className="col-md-8 col-lg-6 forms">
                  {
+                  (
                  roleValue=='Library Circulation' || roleValue==='Registrar'
-                 || roleValue==='Department Head' || roleValue==='College Dean' ?
+                 || roleValue==='Department Head' || roleValue==='College Dean'
+                 ||roleValue==='Immediate Supervisor' || roleValue==='HR') ?
                  (
                    <div className="mb-3">
                     <label>College</label>
@@ -614,7 +612,14 @@ const RegisterEmployee = () => {
                 </div>
                 
                 {
-                roleValue==='Student Cafeteria' || roleValue==='Campus Police'?
+             (roleValue === "Student Cafeteria" || 
+   roleValue === "Campus Police" || 
+   roleValue === "General Store" || 
+   roleValue === "Residence" || 
+   roleValue === "Sports Master" || 
+   roleValue === "Mu saving and credit" || // Changed to a comparison
+   roleValue === "Finance" || 
+   roleValue === "Computer Center")?
                 (
                 <div className="col-md-8 col-lg-6 forms">
                 <div className="mb-3">
@@ -657,10 +662,11 @@ const RegisterEmployee = () => {
   };
 
 return (
-  <div className="justify-content-center">
+  <div className="justify-content-center ">
 
          {isLoading && <Loader />}
    <Header/>
+   <div className="main-content">
         <form onSubmit={handleSubmit}>
           {renderFormStep()}
           <div className="text-center">
@@ -703,7 +709,7 @@ return (
             </div>
           </div>
         </form>
-  
+  </div>
   </div>
 );
 
