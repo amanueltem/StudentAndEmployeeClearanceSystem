@@ -92,9 +92,16 @@ public class CollegeUserService {
     public List<CollegeUser> getRegistrar() {
         return collegeUserRepo.findByPosition(AuthorityEnum.ROLE_REGISTRAR.name());
     }
+
       public List<CollegeUser> getHR() {
         return collegeUserRepo.findByPosition(AuthorityEnum.ROLE_HR.name());
     }
+
+
+      public List<CollegeUser> getImmediate() {
+        return collegeUserRepo.findByPosition(AuthorityEnum.ROLE_IMMEDIATE_SUPERVISOR.name());
+    }
+
 
     @Transactional
     public CollegeUser deleteStaff(Long id) {

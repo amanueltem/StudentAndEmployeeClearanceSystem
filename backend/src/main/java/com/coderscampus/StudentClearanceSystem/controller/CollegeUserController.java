@@ -86,6 +86,20 @@ public class CollegeUserController {
         }
     }
 
+
+    @GetMapping("immediates")
+   public ResponseEntity<?> getImmediates(@AuthenticationPrincipal Account account) {
+        try {
+            if (AuthorityUtil.hasRole(AuthorityEnum.ROLE_ADMIN.name(), account)) {
+                return ResponseEntity.ok(collegeUserService.getImmediate());
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+    }
+
       @DeleteMapping("/{staffId}")
     public ResponseEntity<?> deleteStaff(@AuthenticationPrincipal Account account,
                                            @PathVariable Long staffId) {
