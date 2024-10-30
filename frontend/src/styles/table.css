@@ -1,18 +1,73 @@
-.main-table{
-	background-color:red !important;
-}
-/* In Registration.css or a global CSS file */
-
-.mainContentWrapper {
-  margin-top: 8rem; /* Offset for the topHeader height */
-  padding: 1rem; /* Optional padding for inner content */
-
-  @media (min-width: 768px) {
-    margin-left: 250px; /* Shift content when sidebar is visible on larger screens */
-  }
-
-  @media (max-width: 768px) {
-    margin-left: 0; /* Reset margin for smaller screens where sidebar might be hidden */
-  }
+/* Main container layout */
+.main-container {
+  display: flex; /* Flexbox layout for sidebar and main content */
+  height: 100vh; /* Full viewport height */
 }
 
+/* Sidebar styling */
+.sidebar {
+  width: 250px; /* Fixed width for the sidebar */
+  background-color: #343a40; /* Sidebar background color */
+  color: #fff; /* Text color in sidebar */
+  padding: 1rem; /* Padding within sidebar */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  position: fixed; /* Keep sidebar fixed on the left */
+  height: 100%; /* Full height */
+}
+
+/* Main content styling */
+.main-content {
+  flex: 1; /* Take remaining width of the container */
+  margin-left: 250px; /* Leave space for sidebar */
+  padding: 2rem; /* Padding around main content */
+  background-color: #f8f9fa; /* Light background color */
+  overflow-y: auto; /* Allow vertical scrolling */
+  min-height: 100vh; /* Ensure it fills at least the viewport height */
+}
+
+/* Registrar title styling */
+.registrarTitle {
+  margin-top: 3rem; /* Space from top */
+  margin-bottom: 3rem; /* Space below title */
+  text-align: center; /* Center-align the title */
+  font-size: 3rem; /* Adjust title size */
+  font-weight: bold; /* Make title bold */
+}
+
+/* Registrar section styling */
+.HrRegistrar {
+  margin: 2rem auto; /* Margin for spacing */
+  padding: 1rem; /* Inner padding */
+  background-color: #ffffff; /* White background for section */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  overflow-x: auto; /* Allow horizontal scrolling if necessary */
+}
+
+/* Row and Column styles */
+.Row {
+  display: flex; /* Use flexbox for rows */
+  justify-content: space-between; /* Space out columns */
+  margin: 1rem 0; /* Margin for rows */
+}
+
+.Col {
+  flex: 1; /* Allow columns to flex */
+  padding: 0.5rem; /* Padding within columns */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0; /* Remove left margin for full-width view */
+    padding: 1rem; /* Adjust padding for smaller screens */
+  }
+
+  .HrRegistrar {
+    margin: 1rem; /* Smaller margins on mobile */
+  }
+
+  .registrarTitle {
+    font-size: 1.5rem; /* Smaller font size for title */
+  }
+}
