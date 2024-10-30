@@ -26,9 +26,11 @@ import Library from './AdminDashboard/ViewStaff/CollegeView/Library'
 import CollegeDean from './AdminDashboard/ViewStaff/CollegeView/CollegeDean'
 import Registrar from './AdminDashboard/ViewStaff/CollegeView/Registrar'
 import HRRegistrar from './AdminDashboard/ViewStaff/CollegeView/HRRegistrar'
+import ImmidateSupervisor from './AdminDashboard/ViewStaff/CollegeView/ImmidateSupervisor'
 import Cafeteria from './AdminDashboard/ViewStaff/CampusView/Cafeteria'
 import Proctor from './AdminDashboard/ViewStaff/CampusView/Proctor'
 import CampusPolice from './AdminDashboard/ViewStaff/CampusView/CampusPolice'
+import GeneralStore from "./AdminDashboard/ViewStaff/CampusView/GeneralStore";
 import ViewStudents from './AdminDashboard/ViewStudent/index'
 
 import Register from './StudentDashboard/RegisterStudent/index'
@@ -306,6 +308,32 @@ const App = () => {
           (
           <PrivateRoute>
           <Library/>
+          </PrivateRoute>
+          ):
+          (<PrivateRoute>
+          </PrivateRoute>
+          )
+          }
+          />
+
+<Route path="/view_staff/immediates" element={
+          roles.find((role)=>role==="ROLE_ADMIN")?
+          (
+          <PrivateRoute>
+          <ImmidateSupervisor/>
+          </PrivateRoute>
+          ):
+          (<PrivateRoute>
+          </PrivateRoute>
+          )
+          }
+          />
+
+<Route path="/view_staff/general_stores" element={
+          roles.find((role)=>role==="ROLE_ADMIN")?
+          (
+          <PrivateRoute>
+          <GeneralStore/>
           </PrivateRoute>
           ):
           (<PrivateRoute>

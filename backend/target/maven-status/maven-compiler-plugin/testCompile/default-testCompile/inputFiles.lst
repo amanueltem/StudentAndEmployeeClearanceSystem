@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 /home/aman/practice/StudentClearanceSystem/backend/src/test/java/com/coderscampus/StudentClearanceSystem/StudentClearanceSystemTests.java
 /home/aman/practice/StudentClearanceSystem/backend/src/test/java/com/coderscampus/StudentClearanceSystem/controller/AuthControllerTest.java
 /home/aman/practice/StudentClearanceSystem/backend/src/test/java/com/coderscampus/StudentClearanceSystem/PasswordEncoderTest.java
+=======
+F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\test\java\com\coderscampus\StudentClearanceSystem\StudentClearanceSystemTests.java
+F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\test\java\com\coderscampus\StudentClearanceSystem\PasswordEncoderTest.java
+>>>>>>> 51e8e97af1355440b6db3b2e0ee14af463e48ad3

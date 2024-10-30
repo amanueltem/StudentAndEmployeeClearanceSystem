@@ -268,7 +268,7 @@ const UpdateStudent = () => {
   return (
     <div>
     <Header/>
-       <form>
+       <form className='toForm'>
           {renderFormStep()}
           <div className="text-center">
             <div className="row justify-content-center"> {/* Add a new row for centering */}

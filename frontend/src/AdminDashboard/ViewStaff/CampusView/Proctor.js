@@ -21,7 +21,7 @@ const Proctor = () => {
         {isLoading && <Loader />}
         <h1 className="registrarTitle">List of Proctors</h1>  {/* Use regular CSS classes */}
         <div className="HrRegistrar">  {/* Use regular CSS classes */}
-          <ProctorViewComponent url="/api/proctors" />
+          < ProctorViewComponent url="/api/proctors" />
         </div>
       </div>
     </div>

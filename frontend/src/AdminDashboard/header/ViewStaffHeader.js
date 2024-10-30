@@ -76,6 +76,8 @@ const ViewStaffHeader = () => {
                   <li><NavLink to="/view_staff/college_deans" className={styles.navLink} >College Deans</NavLink></li>
                   <li><NavLink to="/view_staff/registrars" className={styles.navLink}>Registrars</NavLink></li>
                   <li><NavLink to="/view_staff/hrs" className={styles.navLink}>HR Registrars</NavLink></li>
+                  <li><NavLink to="/view_staff/immediates" className={styles.navLink}>Immidate Supervisor</NavLink></li>
+
                 </ul>
               )}
             </li>
@@ -88,6 +90,8 @@ const ViewStaffHeader = () => {
                   <li><NavLink to="/view_staff/cefeterias" className={styles.navLink}>Cafeterias</NavLink></li>
                   <li><NavLink to="/view_staff/proctors" className={styles.navLink}>Proctors</NavLink></li>
                   <li><NavLink to="/view_staff/campus_polices" className={styles.navLink}>Campus Police</NavLink></li>
+                  <li><NavLink to="/view_staff/general_stores" className={styles.navLink}>General Store</NavLink></li>
+
                 </ul>
               )}
             </li>

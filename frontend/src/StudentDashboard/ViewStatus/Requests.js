@@ -36,15 +36,16 @@ const Requests = () => {
   }, [user.jwt]);
 
   const RequesterFormatter = ({ col1, col2 }) => (
-    <Row>
-      <Col xs={3}>
+    <Row className="justify-content-start align-items-center">
+      <Col xs="auto">
         <label>{col1}</label>
       </Col>
-      <Col xs={3}>
+      <Col xs="auto">
         <label>{col2}</label>
       </Col>
     </Row>
   );
+  
 
   const RequestFormatter = ({ request }) => (
     <Card key={request.id} style={{ width: "30rem", height: "30rem" }} className={`${styles.card}`}>

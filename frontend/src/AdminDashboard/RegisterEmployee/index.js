@@ -201,7 +201,8 @@ const RegisterEmployee = () => {
          });
          
          }
-         else if (roleValue==='Library Circulation' || roleValue==='Registrar' || roleValue==='College Dean'
+         else if (roleValue==='Library Circulation' || roleValue==='Registrar' ||
+           roleValue==='College Dean'
           ||'HR' || 'Immediate Supervisor'){
             ajax('/api/college_users','POST',user.jwt,formData).
             then((data)=>{
@@ -316,7 +317,7 @@ const RegisterEmployee = () => {
       case 1:
         return (
           <div>
-         
+         {/* @@@@@@@@@@@@@@@@@@@@@@@@@@22 */}
             <div className="mt-5">
               <div className="row justify-content-center">
                 <div className="col-md-8 col-lg-6 forms">
@@ -355,6 +356,7 @@ const RegisterEmployee = () => {
             </div>
           </div>
         );
+       // @@@@@@@
       case 2:
         return (
            <div>

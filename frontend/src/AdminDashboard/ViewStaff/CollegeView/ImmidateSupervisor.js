@@ -18,9 +18,9 @@ const HRRegistrar = () => {
       <ViewStaffHeader />
       <div className="main-content">
         {isLoading && <Loader />}
-        <h1 className="registrarTitle">List of HR</h1>  {/* Use regular CSS classes */}
+        <h1 className="registrarTitle">List of Immidate Supervisor</h1>  {/* Use regular CSS classes */}
         <div className="HrRegistrar">  {/* Use regular CSS classes */}
-          <CollegeViewComponent url="/api/college_users/hr" />
+          <CollegeViewComponent url="/api/college_users/immediates" />
         </div>
       </div>
     </div>
