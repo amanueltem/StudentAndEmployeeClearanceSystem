@@ -1,83 +1,83 @@
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\enums\ReasonEnum.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\repository\BlockRepository.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\controller\CampusUserController.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\domain\PasswordResetToken.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\enums\AssignmentStatusEnum.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\service\BlockService.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\service\CampusUserService.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\controller\ReasonController.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\repository\DepartmentRepository.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\util\CustomPasswordEncoder.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\repository\UserRepository.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\enums\AssignmentEnum.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\service\CampusService.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\controller\CampusController.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\controller\BlockController.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\repository\CollegeUserRepository.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\dto\StaffDto.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\repository\CollegeRepository.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\repository\DepartmentUserRepository.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\repository\StudentRepository.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\domain\Department.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\config\CorsConfig.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\controller\AuthorityController.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\controller\CollegeUserController.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\controller\StudentController.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\repository\AuthorityRepository.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\controller\AuthController.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\enums\AuthorityEnum.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\repository\StudentTempoRepository.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\domain\DepartmentUser.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\service\DepartmentService.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\util\NetworkUtils.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\service\StudentTempoService.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\config\AppConfig.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\StudentClearanceSystem.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\util\JwtUtil.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\domain\CollegeUser.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\filter\JwtFilter.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\dto\EmployeeDto.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\service\CollegeUserService.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\domain\College.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\controller\ClearanceRequestController.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\domain\Campus.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\service\ClearanceResponseService.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\controller\ProctorController.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\repository\CampusUserRepository.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\controller\StudentTempoController.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\domain\ClearanceRequest.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\service\AccountService.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\controller\DepartmentController.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\controller\ClearanceResponseController.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\domain\ClearanceResponse.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\dto\ResponseDto.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\repository\PasswordResetTokenRepository.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\service\DepartmentUserService.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\config\SecurityConfig.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\domain\CampusUser.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\repository\AccountRepository.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\service\UserDetailsServiceImpl.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\service\StudentService.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\dto\StudentDto.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\domain\StudentTempo.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\service\ClearanceRequestService.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\repository\ClearanceRequestRepository.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\service\ProctorService.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\controller\PasswordResetController.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\repository\ClearanceResponseRepository.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\service\AuthorityService.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\repository\ProctorRepository.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\repository\CampusRepository.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\util\IDGenerator.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\domain\Block.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\domain\Proctor.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\domain\Authority.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\service\CollegeService.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\controller\CollegeController.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\dto\AuthCredentialsRequest.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\util\AuthorityUtil.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\controller\DepartmentUserController.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\domain\Student.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\service\EmailService.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\domain\User.java
-F:\Z Capstone II Project\StudentAndEmployeeClearanceSystem\backend\src\main\java\com\coderscampus\StudentClearanceSystem\domain\Account.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/controller/AuthorityController.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/AccountRepository.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/CampusUserRepository.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/domain/Proctor.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/service/BlockService.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/enums/AuthorityEnum.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/UserRepository.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/dto/AuthCredentialsRequest.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/ClearanceRequestRepository.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/controller/PasswordResetController.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/controller/CollegeUserController.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/controller/ClearanceResponseController.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/domain/CampusUser.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/DepartmentRepository.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/service/DepartmentUserService.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/controller/AuthController.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/domain/Student.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/controller/DepartmentUserController.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/domain/Campus.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/service/AuthorityService.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/BlockRepository.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/service/CollegeService.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/service/CampusUserService.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/domain/User.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/enums/AssignmentStatusEnum.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/filter/JwtFilter.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/util/NetworkUtils.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/controller/ClearanceRequestController.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/enums/AssignmentEnum.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/util/IDGenerator.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/domain/ClearanceRequest.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/controller/StudentController.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/controller/ProctorController.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/CampusRepository.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/domain/PasswordResetToken.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/util/AuthorityUtil.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/enums/ReasonEnum.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/service/StudentTempoService.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/service/UserDetailsServiceImpl.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/config/CorsConfig.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/controller/CampusUserController.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/domain/Department.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/ClearanceResponseRepository.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/AuthorityRepository.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/config/AppConfig.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/dto/StaffDto.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/service/CampusService.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/domain/Authority.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/domain/Account.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/domain/StudentTempo.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/domain/Block.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/controller/DepartmentController.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/service/EmailService.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/config/SecurityConfig.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/controller/ReasonController.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/controller/StudentTempoController.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/domain/DepartmentUser.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/domain/CollegeUser.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/domain/ClearanceResponse.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/StudentRepository.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/CollegeUserRepository.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/service/AccountService.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/CollegeRepository.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/service/ClearanceResponseService.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/controller/CollegeController.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/domain/College.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/service/DepartmentService.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/service/ProctorService.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/dto/ResponseDto.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/controller/CampusController.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/util/CustomPasswordEncoder.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/dto/StudentDto.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/service/StudentService.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/DepartmentUserRepository.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/ProctorRepository.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/util/JwtUtil.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/controller/BlockController.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/StudentTempoRepository.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/service/CollegeUserService.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/dto/EmployeeDto.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/service/ClearanceRequestService.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/PasswordResetTokenRepository.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/StudentClearanceSystem.java

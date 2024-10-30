@@ -9,7 +9,7 @@ import "../../../styles/Registration.css";
 import "../../../styles/table.css";  // Importing CSS file without 'styles' alias
 
 import Loader from "../../../components/Loader";
-import CampusViewComponent from './CampusViewComponent';
+import ProctorViewComponent from './ProcterViewComponent';
 
 const Proctor = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +21,7 @@ const Proctor = () => {
         {isLoading && <Loader />}
         <h1 className="registrarTitle">List of Proctors</h1>  {/* Use regular CSS classes */}
         <div className="HrRegistrar">  {/* Use regular CSS classes */}
-          <CampusViewComponent url="/api/campus_users/proctors" />
+          <ProctorViewComponent url="/api/proctors" />
         </div>
       </div>
     </div>
