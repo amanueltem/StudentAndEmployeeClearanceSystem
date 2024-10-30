@@ -7,6 +7,7 @@ com/coderscampus/StudentClearanceSystem/service/UserDetailsServiceImpl.class
 com/coderscampus/StudentClearanceSystem/util/AuthorityUtil.class
 com/coderscampus/StudentClearanceSystem/repository/PasswordResetTokenRepository.class
 com/coderscampus/StudentClearanceSystem/domain/Campus.class
+com/coderscampus/StudentClearanceSystem/dto/EmployeeDto.class
 com/coderscampus/StudentClearanceSystem/repository/CollegeUserRepository.class
 com/coderscampus/StudentClearanceSystem/dto/StudentDto.class
 com/coderscampus/StudentClearanceSystem/repository/CollegeRepository.class

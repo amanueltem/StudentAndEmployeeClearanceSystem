@@ -77,6 +77,7 @@
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/controller/BlockController.java
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/StudentTempoRepository.java
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/service/CollegeUserService.java
+/home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/dto/EmployeeDto.java
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/service/ClearanceRequestService.java
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/PasswordResetTokenRepository.java
 /home/aman/practice/StudentClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/StudentClearanceSystem.java

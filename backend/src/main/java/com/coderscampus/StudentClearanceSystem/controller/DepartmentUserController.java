@@ -7,7 +7,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import com.coderscampus.StudentClearanceSystem.domain.Account;
-import com.coderscampus.StudentClearanceSystem.dto.StaffDto;
+import com.coderscampus.StudentClearanceSystem.dto.*;
 import com.coderscampus.StudentClearanceSystem.enums.AuthorityEnum;
 import com.coderscampus.StudentClearanceSystem.service.DepartmentUserService;
 import com.coderscampus.StudentClearanceSystem.util.AuthorityUtil;
@@ -46,10 +46,22 @@ public class DepartmentUserController {
         return ResponseEntity.status(HttpStatus.CONFLICT).build();
     }
     }  
+     
 
-
-
-
+        @PostMapping("employee")
+    public ResponseEntity<?> saveEmpoloyee(@AuthenticationPrincipal Account account,
+    @RequestBody EmployeeDto empDto){
+        try{
+        if(AuthorityUtil.hasRole(AuthorityEnum.ROLE_HR.name(),account)){
+           return ResponseEntity.ok(deptUserService.saveEmpoloyee(empDto));
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    }
+    catch(Exception e){
+        return ResponseEntity.status(HttpStatus.CONFLICT).build();
+    }
+    }
+   
 
 
       @DeleteMapping("/{staffId}")
