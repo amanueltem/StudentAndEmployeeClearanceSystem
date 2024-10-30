@@ -1,3 +1,18 @@
 .main-table{
 	background-color:red !important;
 }
+/* In Registration.css or a global CSS file */
+
+.mainContentWrapper {
+  margin-top: 8rem; /* Offset for the topHeader height */
+  padding: 1rem; /* Optional padding for inner content */
+
+  @media (min-width: 768px) {
+    margin-left: 250px; /* Shift content when sidebar is visible on larger screens */
+  }
+
+  @media (max-width: 768px) {
+    margin-left: 0; /* Reset margin for smaller screens where sidebar might be hidden */
+  }
+}
+
