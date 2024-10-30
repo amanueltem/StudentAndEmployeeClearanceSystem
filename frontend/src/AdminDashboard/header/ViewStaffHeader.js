@@ -64,7 +64,7 @@ const ViewStaffHeader = () => {
            <NavLink to="/dashboard" className={styles.homeLink}>
     <FaHome style={{ fontSize: '3rem', color: 'inherit' }} />
 </NavLink>
->
+
             </li>
             <li>
               <div onClick={() => setShowCollegeStaff(!showCollegeStaff)} className={styles.navLink}>
