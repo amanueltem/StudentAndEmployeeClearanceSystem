@@ -8,15 +8,17 @@ import Swal from 'sweetalert2';
 import { toast } from "react-toastify";
 import Loader from "../../../components/Loader";
 
-const CollegeViewComponent = ({ url }) => {
+const CampusViewComponent = ({ url }) => {
   const [datas, setDatas] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const user = useUser();
   const [isLoading, setIsLoading] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState("Select Filter Type");
-  const filteredReasons = ['By Staff Id', 'All'];
+  const filteredReasons = ['By Staff Id', 'By Campus', 'All'];
   const [showStaffId, setShowStaffId] = useState(false);
+  const [showCampus, setShowCampus] = useState(false);
   const [staffId, setStaffId] = useState('');
+  const [campus, setCampus] = useState('');
 
   useEffect(() => {
     setIsLoading(true);
@@ -33,49 +35,67 @@ const CollegeViewComponent = ({ url }) => {
   }, [url, user.jwt]);
 
   useEffect(() => {
-    if (selectedFilter === "By Staff Id") {
-      setShowStaffId(true);
-    } else {
-      setShowStaffId(false);
-      setStaffId(''); // Reset staffId when filter changes
+    switch (selectedFilter) {
+      case "By Staff Id":
+        setShowStaffId(true);
+        setShowCampus(false);
+        break;
+      case "By Campus":
+        setShowCampus(true);
+        setShowStaffId(false);
+        break;
+      default:
+        setShowStaffId(false);
+        setShowCampus(false);
+        setStaffId('');
+        setCampus('');
+        break;
     }
   }, [selectedFilter]);
 
-  const handleChange = (e) => {
+  const handleStaffIdChange = (e) => {
     setStaffId(e.target.value);
   };
 
+  const handleCampusChange = (e) => {
+    setCampus(e.target.value);
+  };
+
   useEffect(() => {
-    if (selectedFilter === "By Staff Id") {
-      const filtered = datas.filter(data => data.account.username.includes(staffId));
-      setFilteredData(filtered);
-    } else if (selectedFilter === "All") {
-      setFilteredData(datas); // Reset to show all data
+    let filtered = datas;
+
+    if (selectedFilter === "By Staff Id" && staffId) {
+      filtered = filtered.filter(data => data.account.username.includes(staffId));
+    } else if (selectedFilter === "By Campus" && campus) {
+      // Adjust to a case-insensitive match
+      filtered = filtered.filter(data => data.campus.name.toLowerCase().includes(campus.toLowerCase()));
     }
-  }, [staffId, selectedFilter, datas]);
+
+    setFilteredData(filtered);
+  }, [staffId, campus, selectedFilter, datas]);
 
   const ResponseFormatter = ({ col1, col2, col3, col4 }) => (
     <div className="row">
       <div className="col"><label className="labelM">{col1}</label></div>
-      <div className="col"><label className="labelM">{col2}</label></div>
-      <div className="col"><label className="labelM fullName">{col3}</label></div>
+      <div className="col"><label className="labelM fullName">{col2}</label></div>
+      <div className="col"><label className="labelM">{col3}</label></div>
       <div className="col">
-        <Link to={`/view_status/${col4}`} style={{ cursor: "pointer" }}>
+        <Link to={`/view_cafeteria/${col4}`} style={{ cursor: "pointer" }}>
           <label className="labelM">Details</label>
         </Link>
       </div>
     </div>
   );
-
+  
   return (
     <div>
       {isLoading && <Loader />}
       <div className={styles.HrRegistrar}>
         <div className="filter-container">
-          <label className={styles.formLabel}>Reason</label>
-          <select 
-            className="dropdown" 
-            value={selectedFilter} 
+          <label className={styles.formLabel}>Filter</label>
+          <select
+            className="dropdown"
+            value={selectedFilter}
             onChange={(e) => setSelectedFilter(e.target.value)}
           >
             <option>Select Filter Type</option>
@@ -89,20 +109,31 @@ const CollegeViewComponent = ({ url }) => {
           {showStaffId && (
             <input
               type="text"
-              placeholder="Enter StaffId"
+              placeholder="Enter Staff ID"
               required
               value={staffId}
-              onChange={handleChange}
+              onChange={handleStaffIdChange}
+              className="input-field"
+            />
+          )}
+          
+          {showCampus && (
+            <input
+              type="text"
+              placeholder="Enter Campus Name"
+              required
+              value={campus}
+              onChange={handleCampusChange}
               className="input-field"
             />
           )}
         </div>
-        
+
         {/* Header Row */}
         <div className="row" style={{ backgroundColor: '#ccccff' }}>
           <div className="col"><label className="fullName">Staff ID</label></div>
           <div className="col"><label className="fullName">Full Name</label></div>
-          <div className="col"><label>College</label></div>
+          <div className="col"><label>Campus</label></div>
           <div className="col"><label>Details</label></div>
         </div>
 
@@ -111,7 +142,7 @@ const CollegeViewComponent = ({ url }) => {
             key={index}
             col1={data.account.username}
             col2={`${data.fname} ${data.mname}`}
-            col3={data.college.name}
+            col3={data.campus.name}
             col4={data.id}
           />
         ))}
@@ -120,4 +151,4 @@ const CollegeViewComponent = ({ url }) => {
   );
 };
 
-export default CollegeViewComponent;
+export default CampusViewComponent;

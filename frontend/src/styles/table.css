@@ -71,3 +71,45 @@
     font-size: 1.5rem; /* Smaller font size for title */
   }
 }
+
+.filter-container {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Align items vertically centered */
+  margin-bottom: 20px; /* Spacing below the filter */
+}
+
+.dropdown {
+  margin-right: 25px; /* Space between dropdown and input */
+  margin-left: 20px;
+  padding: 8px; /* Padding for aesthetics */
+  font-size: 3rem; /* Font size */
+  background-color: aqua;
+}
+
+.input-field {
+  background-color: #6a727a;
+  color:white;
+  padding: 8px; /* Padding for the input field */
+  font-size: 2rem; /* Font size */
+  border: 1px solid #ced4da; /* Border for the input field */
+  border-radius: 4px; /* Rounded corners */
+}
+
+.row {
+  display: flex; /* Use flexbox for rows */
+  justify-content: space-between; /* Space out columns */
+  margin: 1rem 0; /* Margin for rows */
+}
+
+.col {
+  flex: 1; /* Allow columns to flex */
+  padding: 0.5rem; /* Padding within columns */
+}
+.formLabel{
+  font-size: 8rem;
+}
+.input-field::placeholder {
+  color:white; /* Change the color of the placeholder text */
+  font-style: italic; /* Italic style for the placeholder */
+  opacity: 1; /* Set opacity (1 for fully opaque, 0 for transparent) */
+}
