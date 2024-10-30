@@ -1,2 +1,3 @@
 /home/aman/practice/StudentClearanceSystem/backend/src/test/java/com/coderscampus/StudentClearanceSystem/StudentClearanceSystemTests.java
+/home/aman/practice/StudentClearanceSystem/backend/src/test/java/com/coderscampus/StudentClearanceSystem/controller/AuthControllerTest.java
 /home/aman/practice/StudentClearanceSystem/backend/src/test/java/com/coderscampus/StudentClearanceSystem/PasswordEncoderTest.java
