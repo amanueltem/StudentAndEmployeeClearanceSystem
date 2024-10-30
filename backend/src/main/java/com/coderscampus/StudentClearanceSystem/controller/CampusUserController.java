@@ -61,6 +61,19 @@ public class CampusUserController {
        
     }
 
+    @GetMapping("general_stores")
+    public ResponseEntity<?> getGeneralStore(@AuthenticationPrincipal Account account){
+      
+            if(AuthorityUtil.hasRole(AuthorityEnum.ROLE_ADMIN.name(),account)){
+                return ResponseEntity.ok(campusUserService.getGeneralStore());
+            }
+            else{
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+       
+    }
+
+
 
 
          @DeleteMapping("/{staffId}")

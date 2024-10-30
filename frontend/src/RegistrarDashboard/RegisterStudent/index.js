@@ -53,7 +53,7 @@ const handleUpdate=()=>{
   return (
     <div>
          <Header/>
-          <h1 style={{paddingLeft:"5%",paddingTop:"5%",fontSize:"4rem"}}>List of Students waiting for Registration</h1>
+          <h1 style={{paddingLeft:"5%",paddingTop:"5%",marginTop:"3%",fontSize:"4rem"}}>List of Students waiting for Registration</h1>
           {datas ? (
                 <div className={`d-grid gap-5 ${styles.cards}`}
                     style={{ gridTemplateColumns: "repeat(auto-fit,30rem)" }}>{

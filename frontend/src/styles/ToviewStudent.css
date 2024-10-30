@@ -1,0 +1,63 @@
+/* ToviewStudent.css */
+
+.main-container {
+    padding: 20px;
+    margin-right: 20rem !important;
+    
+  }
+  
+  .filter-container {
+    margin-bottom: 20px;
+  }
+  
+  .dropdown {
+    margin-right: 10px;
+  }
+  
+  .input-field {
+    margin-top: 10px;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .fullName {
+    font-weight: bold;
+  }
+  
+  .labelM {
+    margin: 0;
+  }
+  
+  .HrRegistrar {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .row:nth-child(even) {
+    background-color: #f9f9f9; /* Alternate row color */
+  }
+  
+  .row:hover {
+    background-color: #e0e0e0; /* Highlight on hover */
+  }
+  .deleteButton {
+    background-color: #d33;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .deleteButton:hover {
+    background-color: #b30;
+  }
+  .detailsLink{
+    cursor: pointer;
+  }  

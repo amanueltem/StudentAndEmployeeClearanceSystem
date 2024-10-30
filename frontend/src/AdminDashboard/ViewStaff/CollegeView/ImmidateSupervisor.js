@@ -4,14 +4,13 @@ import { useUser } from "../../../UserProvider/index";
 import { useEffect, useState } from 'react';
 import ViewStaffHeader from "../../header/ViewStaffHeader";
 import { useNavigate, Link } from 'react-router-dom';
-
+import CollegeViewComponent from "./CollegeViewComponent";  // Correct import without extra "s"
 import "../../../styles/Registration.css";
 import "../../../styles/table.css";  // Importing CSS file without 'styles' alias
 
 import Loader from "../../../components/Loader";
-import ProctorViewComponent from './ProcterViewComponent';
 
-const Proctor = () => {
+const HRRegistrar = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
@@ -19,13 +18,13 @@ const Proctor = () => {
       <ViewStaffHeader />
       <div className="main-content">
         {isLoading && <Loader />}
-        <h1 className="registrarTitle">List of Proctors</h1>  {/* Use regular CSS classes */}
+        <h1 className="registrarTitle">List of Immidate Supervisor</h1>  {/* Use regular CSS classes */}
         <div className="HrRegistrar">  {/* Use regular CSS classes */}
-          < ProctorViewComponent url="/api/proctors" />
+          <CollegeViewComponent url="/api/college_users/immediates" />
         </div>
       </div>
     </div>
   );
 };
 
-export default Proctor;
+export default HRRegistrar;

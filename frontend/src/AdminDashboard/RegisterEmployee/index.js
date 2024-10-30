@@ -201,7 +201,8 @@ const RegisterEmployee = () => {
          });
          
          }
-         else if (roleValue==='Library Circulation' || roleValue==='Registrar' || roleValue==='College Dean'
+         else if (roleValue==='Library Circulation' || roleValue==='Registrar' ||
+           roleValue==='College Dean'
           ||'HR' || 'Immediate Supervisor'){
             ajax('/api/college_users','POST',user.jwt,formData).
             then((data)=>{

@@ -89,6 +89,10 @@ public class CampusUserService {
         return campusUserRepo.findByPosition(AuthorityEnum.ROLE_CAMPUS_POLICE.name());
       }
 
+      public List<CampusUser> getGeneralStore(){
+        return campusUserRepo.findByPosition(AuthorityEnum.ROLE_GENERAL_STORE.name());
+      }
+
 
          @Transactional
     public CampusUser deleteStaff(Long id) {
