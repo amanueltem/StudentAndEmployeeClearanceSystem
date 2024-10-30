@@ -4,9 +4,9 @@ import { useUser } from "../../../UserProvider/index";
 import { useEffect, useState } from 'react';
 import ViewStaffHeader from "../../header/ViewStaffHeader";
 import { useNavigate, Link } from 'react-router-dom';
-import styles from "../../../styles/Card2.module.scss";
+//import styles from "../../../styles/Card2.module.scss";
 import "../../../styles/Registration.css";
-import "../../../styles/table.css";
+import styles from "../../../styles/table.css";
 import Swal from 'sweetalert2';
 import { toast } from "react-toastify";
 import Loader from "../../../components/Loader";
@@ -85,23 +85,12 @@ const HRRegistrar = () => {
       <div className="main-content">
         {isLoading && <Loader />}
         <h1 className={styles.registrarTitle}>List of HR</h1>
-        <div>
+        <div className={styles.HrRegistrar}>
           <Row style={{ backgroundColor: '#ccccff' }}>
-            <Col>
-              <label className="fullName">Staff ID</label>
-            </Col>
-            <Col>
-              <label>Staff</label>
-            </Col>
-            <Col>
-              <label className="fullName">Full Name</label>
-            </Col>
-            <Col>
-              <label>College</label>
-            </Col>
-            <Col>
-              <label>Details</label>
-            </Col>
+            <Col><label className="fullName">Staff ID</label></Col>
+            <Col><label className="fullName">Full Name</label></Col>
+            <Col><label>College</label></Col>
+            <Col><label>Details</label></Col>
           </Row>
           {filteredData && filteredData.map((data, index) => (
             <ResponseFormatter
@@ -116,6 +105,7 @@ const HRRegistrar = () => {
       </div>
     </div>
   );
+  
 };
 
 export default HRRegistrar;
