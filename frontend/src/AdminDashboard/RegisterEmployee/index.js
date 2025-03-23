@@ -165,7 +165,7 @@ const RegisterEmployee = () => {
    e.preventDefault();
    setIsLoading(true)
    
-    
+
     console.log(formData);
     
     if(roleValue==="Select Role"){
@@ -203,7 +203,8 @@ const RegisterEmployee = () => {
          }
          else if (roleValue==='Library Circulation' || roleValue==='Registrar' ||
            roleValue==='College Dean'
-          ||'HR' || 'Immediate Supervisor'){
+          || roleValue==='HR' || roleValue==='Immediate Supervisor'){
+             
             ajax('/api/college_users','POST',user.jwt,formData).
             then((data)=>{
               setIsLoading(false)
@@ -237,7 +238,7 @@ const RegisterEmployee = () => {
            ajax('/api/campus_users','POST',user.jwt,formData).
            then((data)=>{
              setIsLoading(false)
-           if(data==='conflict') toast.error('Email already taken!');
+           if(data==='conflict') toast.error('Email already taken campusUser!');
            else toast.success(roleValue+' Sucessfuly registered!');
             });
             }

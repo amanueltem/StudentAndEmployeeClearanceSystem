@@ -20,7 +20,7 @@ const CollegeDean = () => {
         {isLoading && <Loader />}
         <h1 className="registrarTitle">List of College Dean</h1>  {/* Use regular CSS classes */}
         <div className="HrRegistrar">  {/* Use regular CSS classes */}
-          <CollegeViewComponent url="/api/college_users/registrars" />
+          <CollegeViewComponent url="/api/college_users/college_deans" />
         </div>
       </div>
     </div>

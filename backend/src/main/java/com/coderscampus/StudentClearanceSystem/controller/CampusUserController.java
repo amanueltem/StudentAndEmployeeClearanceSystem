@@ -20,6 +20,8 @@ public class CampusUserController {
     @PostMapping
     public ResponseEntity<?> saveUser(@AuthenticationPrincipal Account account,
     @RequestBody StaffDto staff){
+    System.out.println("\n\n\n\n\n\n\n\n\n.............++++++++++++++++++++++++.................\n\n");
+    System.out.println(staff.getFname());
         try{
             if(AuthorityUtil.hasRole(AuthorityEnum.ROLE_ADMIN.name(),account)){
                 return ResponseEntity.ok(campusUserService.saveUser(staff));
