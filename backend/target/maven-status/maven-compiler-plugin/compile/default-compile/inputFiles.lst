@@ -44,6 +44,7 @@
 /home/aman/practice/StudentAndEmployeeClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/enums/AuthorityEnum.java
 /home/aman/practice/StudentAndEmployeeClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/enums/ReasonEnum.java
 /home/aman/practice/StudentAndEmployeeClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/filter/JwtAuthenticationFilter.java
+/home/aman/practice/StudentAndEmployeeClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/loader/DefaultAdminAccountLoader.java
 /home/aman/practice/StudentAndEmployeeClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/AccountRepository.java
 /home/aman/practice/StudentAndEmployeeClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/AuthorityRepository.java
 /home/aman/practice/StudentAndEmployeeClearanceSystem/backend/src/main/java/com/coderscampus/StudentClearanceSystem/repository/BlockRepository.java

@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.coderscampus.StudentClearanceSystem.controller.AuthControllerTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 5.017 s <<< FAILURE! -- in com.coderscampus.StudentClearanceSystem.controller.AuthControllerTest
-com.coderscampus.StudentClearanceSystem.controller.AuthControllerTest.testLogin_Success -- Time elapsed: 4.927 s <<< ERROR!
+Tests run: 3, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 5.660 s <<< FAILURE! -- in com.coderscampus.StudentClearanceSystem.controller.AuthControllerTest
+com.coderscampus.StudentClearanceSystem.controller.AuthControllerTest.testLogin_Success -- Time elapsed: 5.559 s <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "com.coderscampus.StudentClearanceSystem.repository.AccountRepository.findByUsername(String)" because "this.accountRepo" is null
 	at com.coderscampus.StudentClearanceSystem.controller.AuthController.login(AuthController.java:36)
 	at com.coderscampus.StudentClearanceSystem.controller.AuthControllerTest.testLogin_Success(AuthControllerTest.java:56)
@@ -10,7 +10,7 @@ java.lang.NullPointerException: Cannot invoke "com.coderscampus.StudentClearance
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-com.coderscampus.StudentClearanceSystem.controller.AuthControllerTest.testLogin_BadCredentials -- Time elapsed: 0.015 s <<< ERROR!
+com.coderscampus.StudentClearanceSystem.controller.AuthControllerTest.testLogin_BadCredentials -- Time elapsed: 0.009 s <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "com.coderscampus.StudentClearanceSystem.repository.AccountRepository.findByUsername(String)" because "this.accountRepo" is null
 	at com.coderscampus.StudentClearanceSystem.controller.AuthController.login(AuthController.java:36)
 	at com.coderscampus.StudentClearanceSystem.controller.AuthControllerTest.testLogin_BadCredentials(AuthControllerTest.java:74)

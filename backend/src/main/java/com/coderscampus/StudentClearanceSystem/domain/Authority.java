@@ -1,39 +1,30 @@
 package com.coderscampus.StudentClearanceSystem.domain;
-
-
-
+import lombok.*;
+import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 
 @Entity
+@Data
+@NoArgsConstructor  // Required by JPA
+@AllArgsConstructor // Needed for @Builder
+@Builder
+public class Authority implements GrantedAuthority {
+    private static final long serialVersionUID = -6520881827973629031L;
 
-public class Authority implements GrantedAuthority{
-    private static final long serialVersionUID=-6520881827973629031L;
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String authority;
+
     @ManyToOne(optional = false)
-    private Account account;
+    @JoinColumn(name = "account_id", referencedColumnName = "id")  // Explicitly specifying the column name
+    private Account user;
 
-    public Authority(){
-
+    @Override
+    public String getAuthority() {
+        return authority;
     }
-
-    public Authority(String authority){
-        this.authority=authority;
-    }
-
-    //getters
-    public Long getId(){return id;}
-    public String getAuthority(){return authority;}
-    public Account getUser(){return account;}
-    //setters
-    public void setId(Long id){this.id=id;}
-    public void setAuthority(String authority){this.authority=authority;}
-    public void setUser(Account user){this.account=user;}
 }
+
