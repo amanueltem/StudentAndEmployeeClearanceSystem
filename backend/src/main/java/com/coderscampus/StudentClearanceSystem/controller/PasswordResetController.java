@@ -4,29 +4,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity; // Add this import
 import org.springframework.web.bind.annotation.*;
 import com.coderscampus.StudentClearanceSystem.service.*;
-import com.coderscampus.StudentClearanceSystem.util.CustomPasswordEncoder;
+
+import lombok.RequiredArgsConstructor;
+
 import com.coderscampus.StudentClearanceSystem.domain.Account;
 import com.coderscampus.StudentClearanceSystem.domain.PasswordResetToken; // Corrected import
-import com.coderscampus.StudentClearanceSystem.util.CustomPasswordEncoder;
 import java.util.Map;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.password.PasswordEncoder;
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/auth")
 public class PasswordResetController {
 
-    @Autowired
-    private UserDetailsServiceImpl userDetailsService;
-
-    @Autowired
-    private EmailService emailService;
-
-    @Autowired
-    private AccountService accountService;
-      @Autowired
-    private CustomPasswordEncoder passwordEncoder;
-
-    @Autowired
-    private String baseUrl;
+    private final UserDetailsServiceImpl userDetailsService;
+    private final EmailService emailService;
+    private final AccountService accountService;
+    private final PasswordEncoder passwordEncoder;
+    private final String baseUrl;
     
    @PostMapping("/forgot-password")
     public String forgotPassword(@RequestParam("email") String email) {
@@ -60,7 +55,7 @@ public ResponseEntity<String> resetPassword(@RequestParam String token, @Request
     ,@RequestBody String password){
         System.out.println("\n\n\n "+password);
         account.setIsDefault(false);
-        account.setPassword(passwordEncoder.getPasswordEncoder().encode(password));
+        account.setPassword(passwordEncoder.encode(password));
        return ResponseEntity.ok(accountService.resetDefault(account));
     }
 }

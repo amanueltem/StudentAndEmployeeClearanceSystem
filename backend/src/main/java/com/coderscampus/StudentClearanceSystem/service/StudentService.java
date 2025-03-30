@@ -5,46 +5,33 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.coderscampus.StudentClearanceSystem.domain.*;
-import com.coderscampus.StudentClearanceSystem.dto.StudentDto;
 import com.coderscampus.StudentClearanceSystem.enums.AuthorityEnum;
 import com.coderscampus.StudentClearanceSystem.repository.*;
 
-import com.coderscampus.StudentClearanceSystem.util.*;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.transaction.annotation.Transactional;
 import java.util.NoSuchElementException;
-
+@RequiredArgsConstructor
 @Service
 public class StudentService {
-    @Autowired
-    private StudentRepository studentRepo;
-    @Autowired
-    private AccountService accountService;
-    @Autowired
-    private AuthorityService authService;
-    @Autowired
-    private CollegeUserRepository cuRepo;
-    @Autowired
-    private CustomPasswordEncoder passwordEncoder;
-    @Autowired
-    private ClearanceRequestRepository clRequestRepo;
-    @Autowired
-    private ClearanceResponseRepository clResponseRepo;
-    @Autowired
-    private PasswordResetTokenRepository presetRepo;
-    @Autowired
-    private AccountRepository accountRepo;
-    @Autowired
-    private StudentTempoRepository studentTempoRepo;
-       @Autowired
-    private EmailService emailService;
-       @Autowired
-    private String baseUrl;
+    private  final StudentRepository studentRepo;
+    private  final AccountService accountService;
+    private final AuthorityService authService;
+    private  final CollegeUserRepository cuRepo;
+    private final PasswordEncoder passwordEncoder;
+    private  final ClearanceRequestRepository clRequestRepo;
+    private  final ClearanceResponseRepository clResponseRepo;
+    private final  PasswordResetTokenRepository presetRepo;
+    private  final AccountRepository accountRepo;
+    private  final StudentTempoRepository studentTempoRepo;
+    private  final EmailService emailService;
+    private final String baseUrl;
 
     @Transactional
     public Student saveStudent(StudentTempo studentTempo){
@@ -70,7 +57,7 @@ public class StudentService {
             newAccount.setUsername(studentTempo.getStudentId());
           
      
-        String password = passwordEncoder.getPasswordEncoder().encode(newStudent.getFname().trim());
+        String password = passwordEncoder.encode(newStudent.getFname().trim());
         newAccount.setPassword(password);
         newAccount.setCreatedDate(LocalDate.now());
         newAccount.setIsDefault(true);

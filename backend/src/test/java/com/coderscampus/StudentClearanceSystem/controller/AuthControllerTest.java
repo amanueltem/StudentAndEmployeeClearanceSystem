@@ -2,7 +2,8 @@ package com.coderscampus.StudentClearanceSystem.controller;
 
 import com.coderscampus.StudentClearanceSystem.domain.Account;
 import com.coderscampus.StudentClearanceSystem.dto.AuthCredentialsRequest;
-import com.coderscampus.StudentClearanceSystem.util.JwtUtil;
+import com.coderscampus.StudentClearanceSystem.util.JwtService;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -29,7 +30,7 @@ class AuthControllerTest {
     private AuthenticationManager authenticationManager;
 
     @Mock
-    private JwtUtil jwtUtil;
+    private JwtService jwtUtil;
 
     @BeforeEach
     void setUp() {
@@ -81,7 +82,7 @@ request.setPassword("password");
         // Arrange
         String token = "valid-token";
         Account user = new Account(); // Initialize the account as necessary
-        when(jwtUtil.validateToken(token, user)).thenReturn(true);
+        when(jwtUtil.isTokenValid(token, user)).thenReturn(true);
 
         // Act
         ResponseEntity<?> response = authController.validateToken(token, user);

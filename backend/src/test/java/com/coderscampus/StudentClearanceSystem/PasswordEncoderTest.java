@@ -1,15 +1,17 @@
 package com.coderscampus.StudentClearanceSystem;
 
 import org.junit.jupiter.api.Test;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+
 public class PasswordEncoderTest {
+    private final PasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
     @Test
     public void encode_password(){
-        PasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
+       
         System.out.println("\n\n\n*************************************");
-        System.out.println(passwordEncoder.encode("asdfasdf"));
-        System.out.println(passwordEncoder.matches("asdfasdf", "$2a$10$A3cN9UrC0YrgKmCFYboVm.c.5dAZm5VK4tJpSPLsypZ2PHmwZ3oha"));
+        System.out.println(passwordEncoder.matches("asdfasdf", "$2a$10$TgKn8KXgW1Rf.B6hBzJ5meh07T4/8wPJxGjJQsR0TuR5uwPtOnbOm"));
     }
 }

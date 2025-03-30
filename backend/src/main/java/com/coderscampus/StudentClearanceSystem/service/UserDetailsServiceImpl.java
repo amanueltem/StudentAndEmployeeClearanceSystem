@@ -4,28 +4,26 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.coderscampus.StudentClearanceSystem.domain.Account;
 import com.coderscampus.StudentClearanceSystem.domain.PasswordResetToken;
 import com.coderscampus.StudentClearanceSystem.repository.AccountRepository;
 import com.coderscampus.StudentClearanceSystem.repository.PasswordResetTokenRepository;
-import com.coderscampus.StudentClearanceSystem.util.CustomPasswordEncoder;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-    @Autowired
-    private AccountRepository accountRepo;
-
-    @Autowired
-    private PasswordResetTokenRepository tokenRepository;
-    
-    @Autowired
-    private CustomPasswordEncoder passwordEncoder;
+    private  final AccountRepository accountRepo;
+    private  final PasswordResetTokenRepository tokenRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -39,7 +37,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     public void updatePassword(Account account, String newPassword) {
-        account.setPassword(passwordEncoder.getPasswordEncoder().encode(newPassword));
+        account.setPassword(passwordEncoder.encode(newPassword));
         accountRepo.save(account);
     }
     

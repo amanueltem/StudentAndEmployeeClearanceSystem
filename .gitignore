@@ -1,11 +1,15 @@
 HELP.md
-./backend/target
-/backend/src/main/resources/application.properties
+backend/target
+backend/target/classes/com/coderscampus/StudentClearanceSystem/*/*
+backend/target/classes/application.properties
+backend/target/classes/com/coderscampus/StudentClearanceSystem/config/AppConfig.class
+
 !./backend/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
 
+backend/.env
 
 
 

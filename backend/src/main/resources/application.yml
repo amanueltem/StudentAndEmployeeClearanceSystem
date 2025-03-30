@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: StudentClearanceSystem
+
+  # Database settings
+  datasource:
+    url: ${DATABASE_URL_CS}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  # Hibernate settings
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  # JWT settings
+  security:
+    filter:
+      order: 10
+ 
+
+  # Mail service settings
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: amanueltemesgen360@gmail.com
+    password: xalk zagq wtqj vkqb
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+# Logging settings
+logging:
+  level:
+    com.coderscampus.AssignmentSubmissionApp: DEBUG
