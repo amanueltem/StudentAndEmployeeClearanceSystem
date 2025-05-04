@@ -1,10 +1,13 @@
 com/coderscampus/StudentClearanceSystem/domain/Proctor.class
 com/coderscampus/StudentClearanceSystem/domain/Student.class
+com/coderscampus/StudentClearanceSystem/loader/CampusDataLoader.class
 com/coderscampus/StudentClearanceSystem/domain/DepartmentUser.class
+com/coderscampus/StudentClearanceSystem/loader/CollegeDataLoader.class
 com/coderscampus/StudentClearanceSystem/enums/AssignmentStatusEnum.class
 com/coderscampus/StudentClearanceSystem/StudentClearanceSystem.class
 com/coderscampus/StudentClearanceSystem/service/UserDetailsServiceImpl.class
 com/coderscampus/StudentClearanceSystem/util/AuthorityUtil.class
+com/coderscampus/StudentClearanceSystem/loader/BlockDataLoader.class
 com/coderscampus/StudentClearanceSystem/repository/PasswordResetTokenRepository.class
 com/coderscampus/StudentClearanceSystem/domain/Campus.class
 com/coderscampus/StudentClearanceSystem/domain/Account$AccountBuilder.class
@@ -13,6 +16,7 @@ com/coderscampus/StudentClearanceSystem/dto/StudentDto.class
 com/coderscampus/StudentClearanceSystem/repository/CollegeUserRepository.class
 com/coderscampus/StudentClearanceSystem/filter/JwtAuthenticationFilter.class
 com/coderscampus/StudentClearanceSystem/repository/CollegeRepository.class
+com/coderscampus/StudentClearanceSystem/loader/CampusUserDataLoader.class
 com/coderscampus/StudentClearanceSystem/domain/ClearanceRequest.class
 com/coderscampus/StudentClearanceSystem/controller/DepartmentController.class
 com/coderscampus/StudentClearanceSystem/dto/StaffDto.class
@@ -66,6 +70,7 @@ com/coderscampus/StudentClearanceSystem/domain/PasswordResetToken.class
 com/coderscampus/StudentClearanceSystem/service/StudentTempoService.class
 com/coderscampus/StudentClearanceSystem/domain/Authority$AuthorityBuilder.class
 com/coderscampus/StudentClearanceSystem/domain/StudentTempo.class
+com/coderscampus/StudentClearanceSystem/loader/DepartmentDataLoader.class
 com/coderscampus/StudentClearanceSystem/config/SecurityConfig.class
 com/coderscampus/StudentClearanceSystem/controller/DepartmentUserController.class
 com/coderscampus/StudentClearanceSystem/controller/AuthController.class

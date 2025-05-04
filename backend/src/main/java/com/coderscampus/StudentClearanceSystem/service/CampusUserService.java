@@ -3,6 +3,8 @@ package com.coderscampus.StudentClearanceSystem.service;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,25 +13,23 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.coderscampus.StudentClearanceSystem.domain.*;
-
+import com.coderscampus.StudentClearanceSystem.service.*;
 import com.coderscampus.StudentClearanceSystem.util.*;
 import com.coderscampus.StudentClearanceSystem.dto.StaffDto;
 import com.coderscampus.StudentClearanceSystem.enums.AuthorityEnum;
 import com.coderscampus.StudentClearanceSystem.repository.*;
 import org.springframework.transaction.annotation.Transactional;
-
+import lombok.*;
+import java.io.IOException;
 @Service
+@RequiredArgsConstructor
 public class CampusUserService {
-    @Autowired
-    private CampusUserRepository campusUserRepo;
-    @Autowired
-    private AccountService accountService;
-    @Autowired
-    private AuthorityService authService;
-    @Autowired
-    private AccountRepository accountRepo;
-      @Autowired
-    private PasswordResetTokenRepository presetRepo;
+    private final  CampusUserRepository campusUserRepo;
+    private final AccountService accountService;
+    private final AuthorityService authService;
+    private final AccountRepository accountRepo;
+    private final PasswordResetTokenRepository presetRepo;
+    private final CampusService campusService;
     public CampusUser saveUser(StaffDto staff){
         CampusUser newUser=new CampusUser();
 
@@ -106,4 +106,58 @@ public class CampusUserService {
         }
         return staff;
     }
+    
+    
+        public void loadCampusUserFromCSV(String campusUserCsvPath){
+        if (campusUserRepo.count() > 0) {
+            System.out.println("campus user data already exists in the database.");
+            return; 
+        }
+        
+        try (BufferedReader br = new BufferedReader(new FileReader(campusUserCsvPath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                // Split the CSV line into name and campus_id
+                String[] data = line.split(",");
+                if (data.length == 8) {
+                    String fname = data[0].trim();  // Trim any spaces from the college name
+                    String mname=data[1].trim();
+                    String lname=data[2].trim();
+                    String gender=data[3].trim();
+                 
+                    Integer phoneNumber=Integer.valueOf(data[4].trim());
+                       String email=data[5].trim();
+                    String position=data[6].trim();
+                    Long campusId = Long.valueOf(data[7].trim());  // Trim any spaces from campus_id
+
+                    
+                    Campus campus= campusService.getCampusById(campusId);
+                    if (campus == null) {
+                        System.out.println("Campus ID " + campusId + " not found. Skipping Campus User: " + fname+" "+lname);
+                        continue;  
+                    }
+
+                    StaffDto staffDto=new StaffDto();
+                  
+                    staffDto.setFname(fname);
+                    staffDto.setMname(mname);
+                    staffDto.setLname(lname);
+                    staffDto.setGender(gender);
+                    staffDto.setPhoneNumber(phoneNumber);
+                    staffDto.setEmail(email);
+                    staffDto.setRoleName(position);
+                    staffDto.setCampus(campus);
+                    
+                    
+                     saveUser(staffDto);
+                  
+                } else {
+                    System.out.println("Invalid line in CSV file: " + line);
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading CSV file: " + e.getMessage());
+            e.printStackTrace();
+        }
+        }
 }

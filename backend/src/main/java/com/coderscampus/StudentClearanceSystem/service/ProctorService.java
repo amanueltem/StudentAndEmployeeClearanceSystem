@@ -15,19 +15,16 @@ import com.coderscampus.StudentClearanceSystem.dto.StaffDto;
 import com.coderscampus.StudentClearanceSystem.enums.AuthorityEnum;
 import com.coderscampus.StudentClearanceSystem.repository.*;
 import org.springframework.transaction.annotation.Transactional;
+import lombok.*;
 
+@RequiredArgsConstructor
 @Service
 public class ProctorService {
-    @Autowired
-    private AccountService accountService;
-    @Autowired
-    private AuthorityService authService;
-    @Autowired
-    private ProctorRepository proRepo;
-    @Autowired
-    private AccountRepository accountRepo;
-       @Autowired
-    private PasswordResetTokenRepository presetRepo;
+    private final AccountService accountService;
+    private final AuthorityService authService;
+    private final ProctorRepository proRepo;
+    private final AccountRepository accountRepo;
+    private  final PasswordResetTokenRepository presetRepo;
     
     public Proctor saveUser(StaffDto staff){
         Proctor newUser=new Proctor();
